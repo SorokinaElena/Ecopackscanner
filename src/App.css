@@ -1,0 +1,68 @@
+/* @font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url('./fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}     */
+
+/* @font-face {
+    font-family: 'Dosis';
+    src: local('Dosis'), url('./fonts/Dosis-VariableFont_wght.ttf') format('truetype');
+}     */
+
+@font-face {
+    font-family: 'Maven Pro';
+    src: local('Maven Pro'), url('./fonts/MavenPro-VariableFont_wght.ttf') format('truetype');
+}    
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Montserrat'; */
+    /* font-family: 'Dosis'; */
+    font-family: 'Maven Pro';
+    font-style: normal;
+    color: #2D2D2D;
+    /* color: #c26f2d; */
+    /* color: #ff8100; */
+    /* color: #612f96; */
+    /* color: #876db2; */
+    /* color: #ffa671; */
+}
+
+html {
+    overflow-x: hidden;
+}
+
+.background_wrapper {
+    /* background-image: url('./media/watercolour_background.avif'); */
+    background-image: url('./media/paper_background_1.png');
+    opacity: 1;
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0 auto;
+    position: relative;
+}
+
+.blur {
+    width: 100vw;
+    min-height: 100vh;
+    backdrop-filter: blur(2.5px);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.content_wrapper {
+    max-width: 1440px;
+    min-width: 1440px;
+    margin: 0 auto;
+}
+
+/* https://www.freepik.com/premium-vector/watercolour-nature-design-with-hand-painted-leaves_29314368.htm#query=watercolor%20background&position=9&from_view=keyword&track=ais */
+/* https://www.freepik.com/free-photos-vectors/watercolor-background */
+/* https://stock.adobe.com/de/search?k=%22green+nature+background%22 */
+
+/* https://www.w3schools.com/cssref/css3_pr_background-size.php */
+
+/* https://infogra.ru/design/krutaya-shpargalka-po-sochetaniyu-tsvetov */
