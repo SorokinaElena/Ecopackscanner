@@ -9,6 +9,7 @@
 .about_us_img {
     width: 650px;
     height: 650px;
+    box-shadow: 10px 10px 12px rgba(141, 140, 146, 0.9);
 }
 
 .descr_container {
