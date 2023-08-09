@@ -24,11 +24,25 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <link rel="stylesheet" href="main.css">
     <title>Ecopackscanner</title>
   </head>
   <body>
+    <div class='cookie_eu_banner hidden'>
+      <img src='icons8-cookie-50.png' alt='cookies image' />
+      <div>
+          We use cookies and other tracking technologies to improve your browsing experience on our website, to show you personalized content and targeted ads, to analyze our website traffic, and to understand where our visitors are coming from.
+      </div>
+      <button class='agree_button'>I agree</button>
+      <button class='decline_button'>I decline</button>
+      <a href="https://www.privacypolicies.com/live/8cada55c-ebc4-46ea-beff-7d5fa57333e3" target="_blank">read about our privacy policy</a>
+      <a href="https://www.privacypolicies.com/live/984f48b5-bb39-4165-89ed-f0c9a54000c3" target="_blank">read about our cookies policy</a>
+    </div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      
+      <script src="main.js"></script>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
