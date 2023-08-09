@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './index.module.css';
 // import home_img from '../../media/home_img_cartoon-concept-recycle.png';
-import home_img from '../../media/home_img_bag.jpg';
+import home_img from '../../media/home_img_bag_small.jpg';
 import { Link } from 'react-router-dom';
 
 export default function HomePage() {
