@@ -1,0 +1,13 @@
+[Unit]
+Description=My Project Threatments
+After=syslog.target network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/prj/template/threatment.sh
+User=root
+
+[Install]
+WantedBy=multi-user.target
