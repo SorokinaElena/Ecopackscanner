@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './index.module.css';
-import about_us_img from '../../media/about_us_img_eco-friendly-disposable-tableware-cups.png';
+import about_us_img from '../../media/about_us_img_eco-friendly-disposable-tableware-cups_small.png';
 import { Link } from 'react-router-dom';
 
 export default function AboutUsPage() {

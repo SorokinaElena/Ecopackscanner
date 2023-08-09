@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './index.module.css';
-import pack_search_img from '../../media/pack_search_img_close-up-sustainable-coffee-cup-alternatives_3.png';
+import pack_search_img from '../../media/pack_search_img_close-up-sustainable-coffee-cup-alternatives_3_small.png';
 
 export default function PackSearchPage() {
   return (
