@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <div className={s.home_page}>
       <img className={s.home_img} src={home_img} alt="cartoon-concept-recycle" />
-      <h1>I'm a packaging</h1>
+      {/* <h1>I'm a packaging</h1> */}
       <div className={s.choice_btns_container}>
         <Link to='producer_data_form'><button>producer</button></Link>
         <Link to='pack_search'><button>customer</button></Link>
