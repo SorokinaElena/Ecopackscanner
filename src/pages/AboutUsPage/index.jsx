@@ -2,6 +2,7 @@ import React from 'react';
 import s from './index.module.css';
 import about_us_img from '../../media/about_us_img_eco-friendly-disposable-tableware-cups_small.png';
 import { Link } from 'react-router-dom';
+import Button from '../../components/Button';
 
 export default function AboutUsPage() {
   return (
@@ -12,7 +13,7 @@ export default function AboutUsPage() {
         The mission of our project is to provide a web-application that enables users to easily search for and find environmentally friendly packaging options. Our goal is to promote sustainability and help businesses make informed decisions by connecting them with suppliers of eco-friendly packaging solutions. Through our platform, we aim to simplify the process of selecting sustainable packaging materials, ultimately contributing to a greener and more environmentally conscious business landscape.
         </p> 
         <Link to='/pack_search'>
-          <button>search for ecopackaging</button>
+          <Button color='grey'>search for ecopackaging</Button>
         </Link> 
       </div>
     </div>

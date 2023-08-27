@@ -20,30 +20,12 @@
     height: 609px;
 }
 
-.home_page h1 {
-    position: absolute;
-    top: 280px;
-    color: #2D2D2D;
-    font-size: 30px;
+.home_page a {
+    text-decoration: none;
 }
 
-.home_page button {
-    width: 400px;
-    padding: 20px;
-    border-radius: 10px;
-    border: none;
-    /* background-color: #e3e3e1; */
-    /* background-color: #00aa50; */
-    background-color: #cdd1ce;
-    font-size: 22px;
-    font-weight: 600;
-    cursor: pointer;
-    color: #2D2D2D;
-}
-
-.home_page button:hover {
-    background-color: #a6a5ad;
-    /* color: #0a500c; */
-    color: white;
-    transition: all .4s ease; 
+.icon {
+    width: 30px;
+    height: 30px;
+    fill:  white;
 }

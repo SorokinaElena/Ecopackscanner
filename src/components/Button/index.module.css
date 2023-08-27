@@ -1,0 +1,54 @@
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.green {
+    background-color: rgba(0, 170, 80, 0.75);
+    border: 1px solid transparent;
+    color: white;
+    padding: 10px;
+    gap: 10px;
+}
+
+.green:hover {
+    background-color: rgba(0, 170, 80, 1);
+    transition: all .4s ease; 
+}
+
+.white {
+    background-color: white;
+    border: 2.5px solid #CFD8DC;
+    color: rgba(166, 165, 173, 1);
+}
+
+.white:hover {
+    background-color: rgba(0, 170, 80, 0.75);
+    color: white;
+    transition: all .4s ease;
+    border: 2px solid transparent;
+}
+
+.grey {
+    width: 400px;
+    border: none;
+    background-color: rgba(166, 165, 173, 0.75);
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+}
+
+.grey:hover {
+    background-color: rgba(0, 170, 80, 0.75);
+    color: white;
+    transition: all .4s ease; 
+}
