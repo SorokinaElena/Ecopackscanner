@@ -1,0 +1,43 @@
+.modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* alpha - коэффициент затемнения */
+    
+    position: fixed; /* при скроле модальное окно будет сохраняться на прежнем месте */
+    top: 0; /* растянули на весь экран и прижали к верхнему левому углу */
+    left: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0; /* по умолчанию - не видно */
+    pointer-events: none; /* отключаут блокировку контакта с задними элементами, когда модального окна не видно */
+}
+    
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/position */
+
+.modal_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    background-color: white;
+    border-radius: 20px;
+    position: relative;
+}
+
+.modal.active {
+    pointer-events: all; /* включает блокировку контакта с задними элементами, когда модальное окна видно */
+    opacity: 1; /* модальное окно есть всегда, но с opacity: 0 элемент не виден */
+}
+
+.cross_icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 10; /* form_item загораживал доступ к контентной части */
+}

@@ -18,24 +18,6 @@
     gap: 50px;
 }
 
-.about_us_page button {
-    width: 400px;
-    padding: 20px;
-    /* border: 2px solid #2D2D2D; */
-    border-radius: 10px;
-    border: none;
-    background-color: #e3e3e1;
-    /* background-color: #cdd1ce; */
-    font-size: 22px;
-    font-weight: 600;
-    cursor: pointer;
-    color: #2D2D2D;
-}
-
-.about_us_page button:hover {
-    /* background-color: blanchedalmond; */
-    background-color: #8d8c92;
-    /* color: #c26f2d; */
-    color: #0a500c;
-    transition: all .4s ease; 
+.about_us_page a {
+    text-decoration: none;
 }

@@ -22,42 +22,32 @@
     font-family: 'Maven Pro';
     font-style: normal;
     color: #2D2D2D;
-    /* color: #c26f2d; */
-    /* color: #ff8100; */
-    /* color: #612f96; */
-    /* color: #876db2; */
-    /* color: #ffa671; */
+    /* color: #c26f2d;
+    color: #ff8100;
+    color: #612f96;
+    color: #876db2;
+    color: #ffa671; */
 }
 
 html {
     overflow-x: hidden;
 }
 
-.background_wrapper {
-    /* background-image: url('./media/watercolour_background.avif'); */
-    background-image: url('./media/paper_background_1.png');
+body {
+    background-image: url('./media/paper_background_2.png');
     opacity: 1;
     background-size: cover;
-    width: 100vw;
-    min-height: 100vh;
-    margin: 0 auto;
-    position: relative;
 }
 
-.blur {
+/* .blur {
     width: 100vw;
     min-height: 100vh;
     backdrop-filter: blur(2.5px);
     position: absolute;
     top: 0;
     left: 0;
-}
+} */
 
-.content_wrapper {
-    max-width: 1440px;
-    min-width: 1440px;
-    margin: 0 auto;
-}
 
 /* https://www.freepik.com/premium-vector/watercolour-nature-design-with-hand-painted-leaves_29314368.htm#query=watercolor%20background&position=9&from_view=keyword&track=ais */
 /* https://www.freepik.com/free-photos-vectors/watercolor-background */
