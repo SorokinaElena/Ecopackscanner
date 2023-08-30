@@ -5,7 +5,6 @@ import { CloseOutlined } from '@ant-design/icons';
 import {Routes, Route} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Context } from '../../context';
-import Login from '../../serveces/Login';
  
 export default function Modal() {
 

@@ -149,7 +149,7 @@ export default function FormItem({title, descr, button, form_type, info_text, li
             : <p className={s.form_descr}>{descr}</p>
         }
     
-        <Button color='grey'>{button.submit}</Button> 
+        <Button color='green'>{button.submit}</Button> 
 
         {
             ['login', 'registration'].includes(form_type)
