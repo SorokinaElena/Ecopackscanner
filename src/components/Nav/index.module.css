@@ -41,12 +41,24 @@
     top: 0;
     right: calc(((100vw - 1440) / 2) * -1)px;
     z-index: 2;  
-     
+
+    /* animation-name: nav_menu_open;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;      */
 }
+
+/* @keyframes nav_menu_open {
+    from { 
+        transform: translateX(100%);
+      }
+    to { 
+        transform: translateX(0);
+    }
+}     */
 
 .nav_menu.is_active {
     display: flex;
-    /* transform: translateX(0%); */
 }
 
 .nav_menu a {
@@ -74,6 +86,12 @@
     width: 26px;
     height: 26px;
     cursor: pointer;
+}
+
+.icon_close:hover {
+    fill: #2D2D2D;
+    transform: rotate(180deg);
+    transition: all .4s ease;
 }
 
 .menu_items_container,

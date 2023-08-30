@@ -50,6 +50,7 @@ export default function Nav() {
         
         <div className={s.close_icon_container}>
           <VscChromeClose className={s.icon_close} onClick={set_menu_active} />
+          
         </div>
 
         <div className={s.menu_items_container}>
