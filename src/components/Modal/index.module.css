@@ -33,11 +33,17 @@
     opacity: 1; /* модальное окно есть всегда, но с opacity: 0 элемент не виден */
 }
 
-.cross_icon {
+.icon_close {
     position: absolute;
     top: 16px;
     right: 16px;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
     z-index: 10; /* form_item загораживал доступ к контентной части */
+}
+
+.icon_close:hover {
+    fill: #2D2D2D;
+    transform: rotate(180deg);
+    transition: all .4s ease;
 }

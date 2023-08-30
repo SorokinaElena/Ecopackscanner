@@ -15,6 +15,8 @@ import Map from './pages/Map';
 function App() {
 
   const [modal, setModal] = useState(false);
+  
+
   const [ userInfo, setUserInfo ] = useState({
     // companyName: '',
     // country: '',

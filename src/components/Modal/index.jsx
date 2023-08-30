@@ -15,7 +15,7 @@ export default function Modal() {
         <div className={s.modal_content}>
 
         <Link to='/'>
-            <CloseOutlined onClick={() => {setModal(false)}} className={s.cross_icon} />
+            <CloseOutlined onClick={() => {setModal(false)}} className={s.icon_close} />
         </Link>
 
         <Routes>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'; 
+import React, { useContext, useRef, useState, useEffect } from 'react'; 
 import Button from '../Button';
 import Input from '../Input';
 import {useForm} from 'react-hook-form';
@@ -14,6 +14,22 @@ export default function FormItem({title, descr, button, form_type, info_text, li
     const navigate = useNavigate();
 
     const { userInfo, setUserInfo, modal, setModal } = useContext(Context);
+
+    // const emailRef = useRef();
+    const errRef = useRef();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false); // instead use router to navigate to our choice  
+
+    // useEffect(() => {
+    //     emailRef.current.focus();
+    // }, []);
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [email, password]);
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
       mode: 'onBlur',
@@ -102,33 +118,27 @@ export default function FormItem({title, descr, button, form_type, info_text, li
         }
 
         {
-            ['login', 'registration'].includes(form_type)
-            ? <>
-            <Input 
+            ['login', 'registration', 'Password recovery'].includes(form_type)
+            ? <Input 
             type="text"
             name='email' 
             placeholder='E-mail'
+            autoComplete='off'
+            autofocus='autofocus'
             {...emailRegister}
             />
-            
-            <Input 
-            type="password" 
-            name='password' 
-            placeholder='Password'
-            {...passwordRegister} />
-            </>
             : ''
         }
 
         {
-            ['Password recovery'].includes(form_type)
-            ? <Input 
-            type="text"
-            name='email' 
-            placeholder='Email'
-            {...emailRegister}
-            />
-            : ''
+          ['login', 'registration'].includes(form_type)
+          ? <Input 
+          type="password" 
+          name='password' 
+          placeholder='Password'
+          {...passwordRegister} 
+          />
+          : ''
         }
 
         {
@@ -139,7 +149,7 @@ export default function FormItem({title, descr, button, form_type, info_text, li
             : <p className={s.form_descr}>{descr}</p>
         }
     
-        <Button color='grey'>{button.submit}</Button> 
+        <Button color='green'>{button.submit}</Button> 
 
         {
             ['login', 'registration'].includes(form_type)
