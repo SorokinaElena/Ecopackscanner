@@ -15,8 +15,7 @@ import Map from './pages/Map';
 function App() {
 
   const [modal, setModal] = useState(false);
-  
-
+  const [pageName, setPageName] = useState('')
   const [ userInfo, setUserInfo ] = useState({
     // companyName: '',
     // country: '',
@@ -28,7 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <Context.Provider value={{modal, setModal, userInfo, setUserInfo}}>
+      <Context.Provider value={{modal, setModal, pageName, setPageName, userInfo, setUserInfo}}>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />

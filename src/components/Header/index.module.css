@@ -1,11 +1,27 @@
 .header {
-    min-height: 10vh;
+    /* min-height: 12vh; */
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
+    position: relative;
+    padding: 10px 0 10px 0;
+}
+
+.logo_main img {
+    z-index: 1;
+    width: auto;
+    height: 220px;
 }
 
 .logo img {
     z-index: 1;
-    height: 30px;
+    width: auto;
+    height: 65px;
+}
+
+.logo_container {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    z-index: 10;
 }

@@ -5,12 +5,12 @@ import Footer from '../Footer';
 import { Outlet } from 'react-router-dom';
 
 
-export default function Layout() {
+export default function Layout({ page_name }) {
 
 
   return (
         <div className={s.content_wrapper}>
-            <Header />
+            <Header page_name={page_name} />
             <main>
               <Outlet /> 
             </main>

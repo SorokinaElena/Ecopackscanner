@@ -107,8 +107,8 @@
 }
 
 .contacts_container {
-    gap: 20px;
-    font-size: 15px;
+    gap: 10px;
+    font-size: 14px;
 }
 
 .contacts_container a {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import s from './index.module.css';
 // import home_img from '../../media/home_img_cartoon-concept-recycle.png';
 import home_img from '../../media/home_img_bag_small.jpg';
@@ -6,9 +6,16 @@ import { Link } from 'react-router-dom';
 import Button from '../../components/Button';
 import { AiOutlineCodeSandbox } from 'react-icons/ai';
 import { AiOutlineCodepen } from 'react-icons/ai';
+import { Context } from '../../context';
 
 
 export default function HomePage() {
+
+const { pageName, setPageName } = useContext(Context);
+setPageName('home_page');
+console.log(pageName);
+
+
   return (
     <div className={s.home_page}>
       <img className={s.home_img} src={home_img} alt="cartoon-concept-recycle" />

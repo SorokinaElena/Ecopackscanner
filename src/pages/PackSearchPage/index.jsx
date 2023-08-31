@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import s from './index.module.css';
 import pack_search_img from '../../media/pack_search_img_close-up-sustainable-coffee-cup-alternatives_3_small.png';
 import { useForm } from 'react-hook-form';
+import { Context } from '../../context';
 
 export default function PackSearchPage() {
+
+  const { pageName, setPageName } = useContext(Context);
+  setPageName('pack_search_page')
+  console.log(pageName);
 
   const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm({
     mode: 'onBlur',

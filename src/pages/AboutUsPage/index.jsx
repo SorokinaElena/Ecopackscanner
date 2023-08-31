@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import s from './index.module.css';
 import about_us_img from '../../media/about_us_img_eco-friendly-disposable-tableware-cups_small.png';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button';
+import { Context } from '../../context';
 
 export default function AboutUsPage() {
+
+  const { pageName, setPageName } = useContext(Context);
+  setPageName('about_us_page')
+  console.log(pageName);
+
   return (
     <div className={s.about_us_page}>
       <img className={s.about_us_img} src={about_us_img} alt="eco-friendly-disposable-tableware-cups" />
