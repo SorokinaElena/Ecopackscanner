@@ -39,7 +39,7 @@
     
     position: absolute;
     top: 0;
-    right: calc(((100vw - 1440) / 2) * -1)px;
+    right: calc(((100vw - 1440px) / 2) * -1);
     z-index: 2;  
 
     /* animation-name: nav_menu_open;
