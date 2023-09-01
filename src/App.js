@@ -16,18 +16,19 @@ function App() {
 
   const [modal, setModal] = useState(false);
   const [pageName, setPageName] = useState('')
-  const [ userInfo, setUserInfo ] = useState({
-    // companyName: '',
-    // country: '',
-    // adress: '',
+  const [ user, setUser ] = useState({
+    userType: '',
+    companyName: '',
+    country: '',
+    adress: '',
     email: '',
     password: '',
-    // userType: '',
   });
+
 
   return (
     <div className="App">
-      <Context.Provider value={{modal, setModal, pageName, setPageName, userInfo, setUserInfo}}>
+      <Context.Provider value={{modal, setModal, pageName, setPageName, user, setUser}}>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
@@ -35,7 +36,7 @@ function App() {
             <Route path='producer_data_form' element={<ProducerDataFormPage />} />
             <Route path='about_us' element={<AboutUsPage />} />
             <Route path='producer_account' element={<ProducerAccountPage />} />
-            {/* <Route path='map' element={<Map />} /> */}
+            <Route path='map' element={<Map />} />
           </Route>
         </Routes>
         <Modal />

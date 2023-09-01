@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, useEffect } from 'react'; 
+import React, { useContext, useState } from 'react'; 
 import Button from '../Button';
 import Input from '../Input';
 import {useForm} from 'react-hook-form';
@@ -8,43 +8,93 @@ import { Context } from '../../context';
 import { addUser } from '../../requests/user';
 import { countries_table } from './data/countries_table';
 import Option from '../Option';
+import authService from '../../services/auth.service';
 
 export default function FormItem({title, descr, button, form_type, info_text, link_url, link_url_1}) {
 
     const navigate = useNavigate();
 
-    const { userInfo, setUserInfo, modal, setModal } = useContext(Context);
+    const { user, setUser, modal, setModal } = useContext(Context);
 
-    // const emailRef = useRef();
-    const errRef = useRef();
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false); // instead use router to navigate to our choice  
-
-    // useEffect(() => {
-    //     emailRef.current.focus();
-    // }, []);
-
-    useEffect(() => {
-        setErrMsg('');
-    }, [email, password]);
-
-    const {register, handleSubmit, formState: {errors}, reset} = useForm({
-      mode: 'onBlur',
-  }); 
-
-    const submit = (data) => {
+    /*const submit = (data) => {
         console.log(data);
         setUserInfo(data);
         // addUser(data);
         setModal(false);
         reset();
         // navigate('/producer_account');
-    };
+    };*/
 
-    console.log(userInfo);
+    const submit = async (data) => {
+      console.log(data);
+      const newUser = {...data};
+      console.log(newUser);
+      const authUser = {
+        email: data.email,
+        password: data.password,
+      };
+      console.log(authUser);
+      // setUser(data);
+      if (['registration'].includes(form_type)) {
+        setUser(newUser);
+        console.log(newUser);
+        console.log(user);
+        try {
+          await authService.signup({...user}).then(
+            (response) => {
+              // check for token and user already exists with 200
+              //   console.log("Sign up successfully", response);
+              setModal(false);
+              reset();
+              navigate('/');
+              window.location.reload();
+              setUser({
+                userType: '',
+                companyName: '',
+                country: '',
+                adress: '',
+                email: '',
+                password: '',
+              })
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      } else if (['login'].includes(form_type)) {
+        setUser(authUser);
+        console.log(authUser);
+        console.log(user);
+        try {
+          await authService.login({...authUser}).then(
+            () => {
+              setModal(false);
+              reset();
+              navigate('/');
+              window.location.reload();
+              setUser({
+                email: '',
+                password: '',
+              })
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      }
+      
+    console.log(user);  
+
+    const {register, handleSubmit, formState: {errors}, reset} = useForm({
+      mode: 'onBlur',
+  }); 
 
     const userTypeRegister = register('userType', {
       required: '* The field "User type" is required',
