@@ -44,18 +44,19 @@ export default function FormItem({title, descr, button, form_type, info_text, li
             (response) => {
               // check for token and user already exists with 200
               //   console.log("Sign up successfully", response);
+              console.log(response)
               setModal(false);
               reset();
-              navigate('/');
+              navigate('/producer_account');
               window.location.reload();
-              setUser({
-                userType: '',
-                companyName: '',
-                country: '',
-                adress: '',
-                email: '',
-                password: '',
-              })
+              // setUser({
+              //   userType: '',
+              //   companyName: '',
+              //   country: '',
+              //   adress: '',
+              //   email: '',
+              //   password: '',
+              // })
             },
             (error) => {
               console.log(error);
@@ -64,21 +65,22 @@ export default function FormItem({title, descr, button, form_type, info_text, li
         } catch (err) {
           console.log(err);
         }
-      } else if (['login'].includes(form_type)) {
+      } 
+      if (['login'].includes(form_type)) {
         setUser(authUser);
         console.log(authUser);
         console.log(user);
         try {
-          await authService.login({...authUser}).then(
+          await authService.login({...user}).then(
             () => {
               setModal(false);
               reset();
-              navigate('/');
+              navigate('/producer_account');
               window.location.reload();
-              setUser({
-                email: '',
-                password: '',
-              })
+              // setUser({
+              //   email: '',
+              //   password: '',
+              // })
             },
             (error) => {
               console.log(error);
@@ -90,7 +92,6 @@ export default function FormItem({title, descr, button, form_type, info_text, li
       };
       }
       
-    console.log(user);  
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
       mode: 'onBlur',

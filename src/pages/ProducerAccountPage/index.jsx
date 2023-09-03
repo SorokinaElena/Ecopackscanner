@@ -1,19 +1,24 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../../context';
+import authService from '../../services/auth.service';
 
 export default function ProducerAccountPage() {
 
-    const { userInfo, setUserInfo } = useContext(Context);
+  const { user, setUser } = useContext(Context);
+  console.log(user);
 
-    console.log(userInfo);
+  const user_info = authService.getCurrentUser();
+  console.log(user_info);
+  
 
   return (
     <div>
         <p>ProducerAccountPage</p>
+
         <Link to='/'>
-            <button>exit</button>
-        </Link>
+            <button onClick={authService.logout}>exit</button>
+        </Link>    
     </div>
   )
 }

@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-// const API_URL = "/auth";
+axios.defaults.baseURL = 'http://localhost:5001';
+
+const API_URL = "/user";
 
 const signup = (userType, companyName, country, adress, email, password) => {
   return axios
-    .post('/signup', {
+    .post(API_URL + '/signup', {
       userType,
       companyName,
       country,
@@ -13,7 +15,7 @@ const signup = (userType, companyName, country, adress, email, password) => {
       password,
     })
     .then((response) => {
-      if (response.data.accessToken) {
+      if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data));
       }
 
@@ -23,12 +25,12 @@ const signup = (userType, companyName, country, adress, email, password) => {
 
 const login = (email, password) => {
   return axios
-    .post('/login', {
+    .post(API_URL + '/login', {
       email,
       password,
     })
     .then((response) => {
-      if (response.data.accessToken) {
+      if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data));
       }
 
@@ -38,6 +40,7 @@ const login = (email, password) => {
 
 const logout = () => {
   localStorage.removeItem("user");
+  console.log('exit');
 };
 
 const getCurrentUser = () => {
