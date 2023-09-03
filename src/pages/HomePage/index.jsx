@@ -21,10 +21,10 @@ console.log(pageName);
       <img className={s.home_img} src={home_img} alt="cartoon-concept-recycle" />
       <div className={s.choice_btns_container}>
         <Link to='producer_data_form'>
-          <Button color='grey'><AiOutlineCodeSandbox className={s.icon} /> Producer</Button>
+          <Button color='grey_main_page'><AiOutlineCodeSandbox className={s.icon} /> Producer</Button>
         </Link>
         <Link to='pack_search'>
-          <Button color='grey'><AiOutlineCodepen className={s.icon}/> Customer</Button>
+          <Button color='grey_main_page'><AiOutlineCodepen className={s.icon}/> Customer</Button>
         </Link>
       </div>
     </div>

@@ -1,17 +1,11 @@
-import React, { forwardRef, useState, useEffect } from 'react'; 
+import React, { forwardRef } from 'react'; 
+import s from './index.module.css';
 
-const Checkbox = forwardRef(({ label, name, value, onChange, defaultChecked, ...rest}, ref) => {
+const Checkbox = forwardRef(({ label, name, value, onChange, defaultChecked, ...rest}, ref, checked) => {
 
-      const [checked, setChecked] = useState(defaultChecked);
-  
-      useEffect(() => {
-        if (onChange) {
-          onChange(checked);
-        }
-      }, [checked]);
-  
+
       return (
-        <div onClick={() => setChecked(!checked)} style={{ cursor: "pointer" }}>
+        <div className={s.checkbox_container} style={{ cursor: "pointer" }}>
           <input
             style={{ display: "none" }}
             ref={ref}
@@ -19,6 +13,7 @@ const Checkbox = forwardRef(({ label, name, value, onChange, defaultChecked, ...
             name={name}
             value={value}
             checked={checked}
+            // label={label}
             // onChange={e => {
             //   setChecked(e.target.checked);
             // }}
@@ -30,3 +25,5 @@ const Checkbox = forwardRef(({ label, name, value, onChange, defaultChecked, ...
   );
 
   export default Checkbox;
+
+//   https://codesandbox.io/s/react-hook-form-custom-checkbox-yncp5?file=/src/App.js:678-749
