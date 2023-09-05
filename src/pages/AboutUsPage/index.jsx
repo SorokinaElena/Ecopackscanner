@@ -7,9 +7,9 @@ import { Context } from '../../context';
 
 export default function AboutUsPage() {
 
-  const { pageName, setPageName } = useContext(Context);
-  setPageName('about_us_page')
-  console.log(pageName);
+  // const { pageName, setPageName } = useContext(Context);
+  // setPageName('about_us_page')
+  // console.log(pageName);
 
   return (
     <div className={s.about_us_page}>

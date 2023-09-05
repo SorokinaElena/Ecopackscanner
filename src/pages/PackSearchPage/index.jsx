@@ -6,9 +6,9 @@ import { Context } from '../../context';
 
 export default function PackSearchPage() {
 
-  const { pageName, setPageName } = useContext(Context);
-  setPageName('pack_search_page')
-  console.log(pageName);
+  // const { pageName, setPageName } = useContext(Context);
+  // setPageName('pack_search_page')
+  // console.log(pageName);
 
   const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm({
     mode: 'onBlur',

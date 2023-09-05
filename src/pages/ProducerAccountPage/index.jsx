@@ -7,7 +7,7 @@ export default function ProducerAccountPage() {
 
   const { user, setUser } = useContext(Context);
   console.log(user);
-
+  
   const user_info = authService.getCurrentUser();
   console.log(user_info);
   
@@ -15,6 +15,7 @@ export default function ProducerAccountPage() {
   return (
     <div>
         <p>ProducerAccountPage</p>
+        <p>company name: {user.email}</p>
 
         <Link to='/'>
             <button onClick={authService.logout}>exit</button>

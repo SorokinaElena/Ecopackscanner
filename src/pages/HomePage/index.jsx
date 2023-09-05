@@ -11,9 +11,9 @@ import { Context } from '../../context';
 
 export default function HomePage() {
 
-const { pageName, setPageName } = useContext(Context);
-setPageName('home_page');
-console.log(pageName);
+// const { pageName, setPageName } = useContext(Context);
+// setPageName('home_page');
+// console.log(pageName);
 
 
   return (

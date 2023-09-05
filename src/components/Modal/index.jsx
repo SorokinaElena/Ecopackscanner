@@ -46,7 +46,7 @@ export default function Modal() {
                     title='Password recovery'
                     button={{submit: 'Send', redirect: 'Log in'}}
                     descr='The temporary password is valid for 24 hours.'
-                    form_type={'Password recovery'}
+                    form_type={'password recovery'}
                     info_text='To receive a temporary password, you must enter the email address you provided during registration.'
                     link_url={'/login_form'}
                 />}

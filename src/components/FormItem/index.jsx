@@ -5,7 +5,6 @@ import {useForm} from 'react-hook-form';
 import s from './index.module.css';
 import {Link, useNavigate} from 'react-router-dom';
 import { Context } from '../../context';
-import { addUser } from '../../requests/user';
 import { countries_table } from './data/countries_table';
 import Option from '../Option';
 import authService from '../../services/auth.service';
@@ -16,47 +15,25 @@ export default function FormItem({title, descr, button, form_type, info_text, li
 
     const { user, setUser, modal, setModal } = useContext(Context);
 
-    /*const submit = (data) => {
-        console.log(data);
-        setUserInfo(data);
-        // addUser(data);
-        setModal(false);
-        reset();
-        // navigate('/producer_account');
-    };*/
-
     const submit = async (data) => {
       console.log(data);
-      const newUser = {...data};
-      console.log(newUser);
-      const authUser = {
-        email: data.email,
-        password: data.password,
-      };
-      console.log(authUser);
-      // setUser(data);
+      const user_temp = data;
+      console.log(user_temp);
+      setUser(user_temp);
+      console.log(user);
+      reset();
       if (['registration'].includes(form_type)) {
-        setUser(newUser);
-        console.log(newUser);
-        console.log(user);
         try {
-          await authService.signup({...user}).then(
+          await authService.signup({...user_temp}).then(
             (response) => {
               // check for token and user already exists with 200
               //   console.log("Sign up successfully", response);
-              console.log(response)
+              console.log(response);
+              console.log(user);
               setModal(false);
-              reset();
+              // reset();
               navigate('/producer_account');
-              window.location.reload();
-              // setUser({
-              //   userType: '',
-              //   companyName: '',
-              //   country: '',
-              //   adress: '',
-              //   email: '',
-              //   password: '',
-              // })
+              // window.location.reload(); // обнуляет состояние
             },
             (error) => {
               console.log(error);
@@ -65,54 +42,48 @@ export default function FormItem({title, descr, button, form_type, info_text, li
         } catch (err) {
           console.log(err);
         }
-      } 
-      if (['login'].includes(form_type)) {
-        setUser(authUser);
-        console.log(authUser);
-        console.log(user);
-        try {
-          await authService.login({...user}).then(
-            () => {
-              setModal(false);
-              reset();
-              navigate('/producer_account');
-              window.location.reload();
-              // setUser({
-              //   email: '',
-              //   password: '',
-              // })
-            },
-            (error) => {
-              console.log(error);
+      } else if (['login'].includes(form_type)) {
+            console.log('trying to login')
+            try {
+              await authService.login({...user_temp}).then(
+                (response) => {
+                  console.log(response);
+                  console.log(user);
+                  setModal(false);
+                  // reset();
+                  navigate('/producer_account');
+                  // window.location.reload();
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
+            } catch (err) {
+              console.log(err);
             }
-          );
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      }
-      
+          // };
+                }
+    }
+
+      console.log(user);
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
       mode: 'onBlur',
   }); 
 
+
     const userTypeRegister = register('userType', {
       required: '* The field "User type" is required',
     });
-
     const companyNameRegister = register('companyName', {
       required: '* The field "Company name" is required',
     });
-
     const countryRegister = register('country', {
       required: '* The field "Country" is required',
     });
-
     const adressRegister = register('adress', {
       required: '* The field "Adress" is required',
     });
-
     const emailRegister = register('email', {
       required: '* The field "E-mail" is required',
       pattern: {
@@ -120,7 +91,6 @@ export default function FormItem({title, descr, button, form_type, info_text, li
         message: '* Not valid email-format'
     }
     });
-
     const passwordRegister = register('password', {
       required: '* The field "Password" is required',
     });
@@ -169,13 +139,12 @@ export default function FormItem({title, descr, button, form_type, info_text, li
         }
 
         {
-            ['login', 'registration', 'Password recovery'].includes(form_type)
+            ['login', 'registration', 'password recovery'].includes(form_type)
             ? <Input 
             type="text"
             name='email' 
             placeholder='E-mail'
             autoComplete='off'
-            autofocus='autofocus'
             {...emailRegister}
             />
             : ''
@@ -195,7 +164,7 @@ export default function FormItem({title, descr, button, form_type, info_text, li
         {
             ['login'].includes(form_type)
             ? <Link to={link_url_1} style={{textDecoration: 'none'}}>
-                <p className={s.form_descr} style={{fontSize: '14px', textAlign: 'right'}}>{descr}</p>
+                <p className={s.form_descr} style={{fontSize: '18px', textAlign: 'right'}}>{descr}</p>
               </Link>
             : <p className={s.form_descr}>{descr}</p>
         }
@@ -212,15 +181,15 @@ export default function FormItem({title, descr, button, form_type, info_text, li
             : ''
         }
 
-        {
-            ['Password recovery'].includes(form_type)
+        {/* {
+            ['password recovery'].includes(form_type)
             ? <Link to={link_url} style={{textDecoration: 'none'}}>
                 <Button color='white'>
                     {button.redirect}
                 </Button> 
               </Link>  
             : ''
-        }
+        } */}
           
         {
             ['login'].includes(form_type)
