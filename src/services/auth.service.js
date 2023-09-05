@@ -47,11 +47,19 @@ const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
 
+const recowerPassword = (email) => {
+  return axios
+    .post(API_URL + '/test', {
+      email,
+    })
+};
+
 const authService = {
   signup,
   login,
   logout,
   getCurrentUser,
+  recowerPassword
 };
 
 export default authService;

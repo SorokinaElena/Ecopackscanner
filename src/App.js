@@ -7,7 +7,9 @@ import PackSearchPage from './pages/PackSearchPage';
 import ProducerDataFormPage from './pages/ProducerDataFormPage';
 import AboutUsPage from './pages/AboutUsPage';
 import { Context } from './context';
-import Modal from './components/Modal';
+// import Modal from './components/Modal';
+import ModalSignUp from './components/ModalSignUp';
+import ModalLogIn from './components/ModalLogIn';
 import ProducerAccountPage from './pages/ProducerAccountPage';
 import Map from './pages/Map';
 
@@ -15,7 +17,11 @@ import Map from './pages/Map';
 function App() {
 
   const [modal, setModal] = useState(false);
+  const [modalSignUp, setModalSignUp] = useState(false);
+  const [modalLogIn, setModalLogIn] = useState(false);
+
   // const [pageName, setPageName] = useState('')
+
   const [ user, setUser ] = useState({
     userType: '',
     companyName: '',
@@ -28,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <Context.Provider value={{modal, setModal, user, setUser }}>
+      <Context.Provider value={{modal, setModal, modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, user, setUser }}>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
@@ -39,7 +45,9 @@ function App() {
             <Route path='map' element={<Map />} />
           </Route>
         </Routes>
-        <Modal />
+        {/* <Modal /> */}
+        <ModalSignUp />
+        <ModalLogIn />
       </Context.Provider>
     </div>
   );

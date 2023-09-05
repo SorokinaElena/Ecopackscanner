@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'; 
+import React, { useContext } from 'react'; 
 import Button from '../Button';
 import Input from '../Input';
 import {useForm} from 'react-hook-form';
@@ -21,7 +21,10 @@ export default function FormItem({title, descr, button, form_type, info_text, li
       console.log(user_temp);
       setUser(user_temp);
       console.log(user);
-      reset();
+      reset({
+        email: '',
+        password: '',
+      });
       if (['registration'].includes(form_type)) {
         try {
           await authService.signup({...user_temp}).then(
@@ -31,7 +34,6 @@ export default function FormItem({title, descr, button, form_type, info_text, li
               console.log(response);
               console.log(user);
               setModal(false);
-              // reset();
               navigate('/producer_account');
               // window.location.reload(); // обнуляет состояние
             },
@@ -42,7 +44,8 @@ export default function FormItem({title, descr, button, form_type, info_text, li
         } catch (err) {
           console.log(err);
         }
-      } else if (['login'].includes(form_type)) {
+      }
+      if (['login'].includes(form_type)) {
             console.log('trying to login')
             try {
               await authService.login({...user_temp}).then(
@@ -50,7 +53,6 @@ export default function FormItem({title, descr, button, form_type, info_text, li
                   console.log(response);
                   console.log(user);
                   setModal(false);
-                  // reset();
                   navigate('/producer_account');
                   // window.location.reload();
                 },
@@ -61,7 +63,6 @@ export default function FormItem({title, descr, button, form_type, info_text, li
             } catch (err) {
               console.log(err);
             }
-          // };
                 }
     }
 

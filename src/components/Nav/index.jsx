@@ -20,7 +20,7 @@ export default function Nav() {
     setMenuActive(menuActive ? false : true)
   }
 
-  const { modal, setModal } = useContext(Context);
+  const { modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, modal, setModal } = useContext(Context);
 
   return (
     <nav className={s.nav}>
@@ -28,7 +28,8 @@ export default function Nav() {
       <Link to='/login_form' style={{textDecoration: 'none'}}>
         <Button 
           color='green' 
-          onClick={() => {setModal(true)}}
+          onClick={() => {setModalLogIn(true)}}
+          // onClick={() => {setModal(true)}}
         >
           <PiUser className={s.icon} />
           Sign in
@@ -37,7 +38,8 @@ export default function Nav() {
       <Link to='/registration_form' style={{textDecoration: 'none'}}>
         <Button 
           color='green' 
-          onClick={() => {setModal(true)}}
+          onClick={() => {setModalSignUp(true)}}
+          // onClick={() => {setModal(true)}}
         >
           <PiUserPlus className={s.icon} />
           Sign up

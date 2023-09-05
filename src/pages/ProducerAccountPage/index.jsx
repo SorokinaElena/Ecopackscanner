@@ -15,7 +15,7 @@ export default function ProducerAccountPage() {
   return (
     <div>
         <p>ProducerAccountPage</p>
-        <p>company name: {user.email}</p>
+        <p>user name: {user.email}</p>
 
         <Link to='/'>
             <button onClick={authService.logout}>exit</button>
