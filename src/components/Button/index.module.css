@@ -11,6 +11,19 @@
     cursor: pointer;
 }
 
+.grey {
+    background-color: rgba(166, 165, 173, 0.75);
+    border: 1px solid transparent;
+    color: white;
+    /* padding: 10px; */
+    gap: 10px;
+}
+
+.grey:hover {
+    background-color: rgba(0, 170, 80, 0.75);
+    transition: all .4s ease; 
+}
+
 .green {
     background-color: rgba(0, 170, 80, 0.75);
     border: 1px solid transparent;
@@ -37,8 +50,8 @@
     border: 2px solid transparent;
 }
 
-.grey {
-    width: 400px;
+.grey_main_page {
+    width: 350px;
     border: none;
     background-color: rgba(166, 165, 173, 0.75);
     font-size: 22px;
@@ -47,7 +60,7 @@
     color: white;
 }
 
-.grey:hover {
+.grey_main_page:hover {
     background-color: rgba(0, 170, 80, 0.75);
     color: white;
     transition: all .4s ease; 
