@@ -1,6 +1,9 @@
 import axios from 'axios';
 
+
 axios.defaults.baseURL = 'http://localhost:5001';
+// Include credentials (cookies) with every Axios request
+// axios.defaults.withCredentials = true;
 
 const API_URL = "/user";
 
@@ -39,12 +42,12 @@ const login = (email, password) => {
 };
 
 const logout = () => {
-  localStorage.removeItem("user");
+  localStorage.removeItem('user');
   console.log('exit');
 };
 
 const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
+  return JSON.parse(localStorage.getItem('user'));
 };
 
 const recowerPassword = (email) => {

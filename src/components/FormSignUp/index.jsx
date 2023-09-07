@@ -13,14 +13,12 @@ export default function FormSignUp({title, descr, button, form_type, info_text, 
 
     const navigate = useNavigate();
 
-    const { user, setUser, modalSignUp, setModalSignUp } = useContext(Context);
+    const { user, setUser, modalSignUp, setModalSignUp, isAuthUser, setIsAuthUser } = useContext(Context);
 
     const submit = async (data) => {
       console.log(data);
       const user_temp = data;
-      console.log(user_temp);
-      setUser(user_temp);
-      console.log(user);
+      
       reset({
         email: '',
         password: '',
@@ -30,6 +28,8 @@ export default function FormSignUp({title, descr, button, form_type, info_text, 
             (response) => {
               // check for token and user already exists with 200
               //   console.log("Sign up successfully", response);
+              setUser(user_temp);
+              setIsAuthUser(true);
               setModalSignUp(false);
               navigate('/producer_account');
               // window.location.reload(); // обнуляет состояние
@@ -45,6 +45,7 @@ export default function FormSignUp({title, descr, button, form_type, info_text, 
     }
 
       console.log(user);
+      console.log(isAuthUser);
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
       mode: 'onBlur',

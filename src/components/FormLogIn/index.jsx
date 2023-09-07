@@ -11,14 +11,12 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
 
     const navigate = useNavigate();
 
-    const { user, setUser, modalLogIn, setModalLogIn } = useContext(Context);
+    const { user, setUser, modalLogIn, setModalLogIn, isAuthUser, setIsAuthUser } = useContext(Context);
 
     const submit = async (data) => {
       console.log(data);
       const user_temp = data;
-      console.log(user_temp);
-      setUser(user_temp);
-      console.log(user);
+      
       reset({
         email: '',
         password: '',
@@ -27,6 +25,8 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
         try {
           await authService.login({...user_temp}).then(
             (response) => {
+              setUser(user_temp);
+              setIsAuthUser(true);
               setModalLogIn(false);
               navigate('/producer_account');
               // window.location.reload();
@@ -64,6 +64,7 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
     }
 
       console.log(user);
+      console.log(isAuthUser);
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
       mode: 'onBlur',

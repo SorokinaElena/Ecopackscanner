@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
@@ -12,6 +12,7 @@ import ModalSignUp from './components/ModalSignUp';
 import ModalLogIn from './components/ModalLogIn';
 import ProducerAccountPage from './pages/ProducerAccountPage';
 import Map from './pages/Map';
+import authService from '../src/services/auth.service';
 
 
 function App() {
@@ -19,9 +20,6 @@ function App() {
   const [modal, setModal] = useState(false);
   const [modalSignUp, setModalSignUp] = useState(false);
   const [modalLogIn, setModalLogIn] = useState(false);
-
-  // const [pageName, setPageName] = useState('')
-
   const [ user, setUser ] = useState({
     userType: '',
     companyName: '',
@@ -30,11 +28,14 @@ function App() {
     email: '',
     password: '',
   });
+  const [isAuthUser, setIsAuthUser] = useState(false);
+  // const [pageName, setPageName] = useState('')
 
+  console.log(isAuthUser);
 
   return (
     <div className="App">
-      <Context.Provider value={{modal, setModal, modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, user, setUser }}>
+      <Context.Provider value={{modal, setModal, modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, user, setUser, isAuthUser, setIsAuthUser}}>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
