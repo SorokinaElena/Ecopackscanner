@@ -9,34 +9,99 @@
     padding-top: 30px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-}
-
-.checkbox_container {
-    /* display: flex; */
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    
-    width: 90%;
-    padding: 20px;
-    border-radius: 10px;
-    border: none;
-    /* background-color: #e3e3e1; */
-    background-color: transparent;
-    font-size: 20px;
-    font-weight: 500;
-    cursor: pointer;
-    color: #2D2D2D;
-    box-shadow: 10px 10px 12px rgba(141, 140, 146, 0.9);
+    /* gap: 5px; */
 }
 
 .button_container {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    /* gap: 5px; */
     width: 90%;
 }
+
+.btn_content_container {
+    display: none;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 20px;
+    padding: 20px;
+    gap: 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+    box-shadow: 10px 10px 12px rgba(141, 140, 146, 0.9);
+}
+
+.btn_content_container.is_active {
+    display: flex;
+    background-color: #aeceb9;
+}
+
+.inputs_container.select {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 4px 0;
+    font-weight: 400;
+    font-size: 18px;
+    color: #1A1A1A;
+}
+
+.inputs_container.select:focus {
+    outline: none;
+    border-color: rgba(0, 170, 80, 0.75);
+}
+
+.inputs_container {
+    flex-direction: row;
+    gap: 5px;
+}
+
+.checkbox_container {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox_container,
+.inputs_container {
+    display: flex;
+    /* display: none; */
+    /* width: 90%; */
+    /* padding: 20px; */
+    border-radius: 10px;
+    border: none;
+    /* background-color: transparent; */
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    color: #2D2D2D;
+    /* box-shadow: 10px 10px 12px rgba(141, 140, 146, 0.9); */
+
+    
+}
+
+/* .btn_content_container {
+    display: none;
+} */
+
+/* .btn_content_container.isActive {
+    display: flex;
+    background-color: #aeceb9;
+} */
+
+/* .checkbox_container.is_active,
+.inputs_container.is_active {
+    display: flex;
+    background-color: #aeceb9;
+} */
+
+.inputs_container {
+    flex-direction: row;
+}
+
+
+
 
 
 

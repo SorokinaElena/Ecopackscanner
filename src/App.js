@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
@@ -12,7 +12,6 @@ import ModalSignUp from './components/ModalSignUp';
 import ModalLogIn from './components/ModalLogIn';
 import ProducerAccountPage from './pages/ProducerAccountPage';
 import Map from './pages/Map';
-import authService from '../src/services/auth.service';
 
 
 function App() {
@@ -20,7 +19,7 @@ function App() {
   const [modal, setModal] = useState(false);
   const [modalSignUp, setModalSignUp] = useState(false);
   const [modalLogIn, setModalLogIn] = useState(false);
-  const [ user, setUser ] = useState({
+  const [user, setUser] = useState({
     userType: '',
     companyName: '',
     country: '',
