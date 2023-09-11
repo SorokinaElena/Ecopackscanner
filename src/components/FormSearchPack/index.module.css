@@ -122,3 +122,7 @@
     color: #2D2D2D;
     box-shadow: 10px 10px 12px rgba(141, 140, 146, 0.9);
 } */
+
+.checkbox_container label {
+    padding-left: 10px;
+}

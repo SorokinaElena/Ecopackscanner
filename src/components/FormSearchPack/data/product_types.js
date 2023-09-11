@@ -1,44 +1,26 @@
 export const product_types = [
     {
-        id: 1,
+        id: 0,
         name: 'fragile',
-        label: ' fragile',
-        value: true,
-        checked: false,
+    },
+    {
+        id: 1,
+        name: 'granules',
     },
     {
         id: 2,
-        name: 'granules',
-        label: ' granules',
-        value: true,
-        checked: false,
+        name: 'liquid',
     },
     {
         id: 3,
-        name: 'liquid',
-        label: ' liquid',
-        value: true,
-        checked: false,
+        name: 'perishable',
     },
     {
         id: 4,
-        name: 'perishable',
-        label: ' perishable',
-        value: true,
-        checked: false,
+        name: 'powder',
     },
     {
         id: 5,
-        name: 'powder',
-        label: ' powder',
-        value: true,
-        checked: false,
-    },
-    {
-        id: 6,
         name: 'solid',
-        label: ' solid',
-        value: true,
-        checked: false,
     }
 ]
