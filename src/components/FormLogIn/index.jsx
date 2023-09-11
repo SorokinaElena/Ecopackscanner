@@ -41,25 +41,26 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
         }
       }
       if(['password recovery'].includes(form_type)) {
-        authService.recowerPassword({...user_temp});
+
+        // authService.recowerPassword({...user_temp});
         console.log('request for password recowery sent');
-        setModalLogIn(false);
-        navigate('/');
-        window.location.reload();
-        // try {
-        //   await authService.recowerPassword({...user_temp}).then(
-        //     (response) => {
-        //       setModalLogIn(false);
-        //       navigate('/');
-              // window.location.reload();
-      //       },
-      //       (error) => {
-      //         console.log(error);
-      //       }
-      //     );
-      //   } catch (err) {
-      //     console.log(err);
-      //   }
+        // setModalLogIn(false);
+        // navigate('/');
+        // window.location.reload();
+        try {
+          await authService.recowerPassword({...user_temp}).then(
+            (response) => {
+              setModalLogIn(false);
+              navigate('/');
+              window.location.reload();
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        } catch (err) {
+          console.log(err);
+        }
       }     
     }
 

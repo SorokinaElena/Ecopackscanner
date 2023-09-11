@@ -54,7 +54,7 @@ const getCurrentUser = () => {
 
 const recowerPassword = (email) => {
   return axios
-    .post(API_URL + '/test', {
+    .post(API_URL + '/sendcode', {
       email,
     })
 };
