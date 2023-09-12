@@ -6,31 +6,32 @@ import CheckboxI from '../CheckboxI';
 import Input from '../Input';
 import { dimensions } from './data/dimensions';
 import { product_types } from './data/product_types';
+import { packaging_types } from './data/packaging_types';
+import { sustainability_levels } from './data/sustainability_levels';
 
 
 export default function FormSearchPack() {
-
-  const [checked, setChecked] = useState(false); 
+ 
   const [isActiveDimensions, setIsActiveDimensions] = useState(false);
-  const [isActiveType, setIsActiveType] = useState(false);
+  const [isActiveProductType, setIsActiveProductType] = useState(false);
+  const [isActivePackagingType, setIsActivePackagingType] = useState(false);
+  const [isActiveSustainabilityType, setIsActiveSustainabilityType] = useState(false);
 
-  const set_is_active_dimensions = () => {
-    // if(btn_name === 'dimensions') {
+  const set_is_active_btn = (event) => {
+    const btn_name = event.target.id;
+    if(btn_name === 'dimensions') {
       setIsActiveDimensions(isActiveDimensions ? false : true);
-    // };
-    // if(btn_name === 'type') {
-    //   setIsActiveType(isActiveType ? false : true);
-    // };
-  };
-  
-  const set_is_active_type = () => {
-    // if(btn_name === 'dimensions') {
-      setIsActiveType(isActiveType ? false : true);
-    // };
-    // if(btn_name === 'type') {
-    //   setIsActiveType(isActiveType ? false : true);
-    // };
-  };
+    }
+    if(btn_name === 'product_type') {
+      setIsActiveProductType(isActiveProductType ? false : true);
+    }
+    if(btn_name === 'packaging_type') {
+      setIsActivePackagingType(isActivePackagingType ? false : true);
+    }
+    if(btn_name === 'sustainability_level') {
+      setIsActiveSustainabilityType(isActiveSustainabilityType ? false : true);
+    }
+  }
 
     const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm({
         mode: 'onBlur'
@@ -60,28 +61,45 @@ export default function FormSearchPack() {
     });
 
     const prodact_type_registers = [];
-
     product_types.map(el => {
       // const register_name = `${el.name}Register`;
       const register_name = el.name;
       const register_object = register(`${register_name}`, {
         required: false,
-      })
+      });
       prodact_type_registers.push(register_object);
     });
-
     // console.log(prodact_type_registers);
     // console.log(prodact_type_registers[0]);
-
     const otherTypeRegister = register('otherType');
- 
+
+    const packaging_type_registers = [];
+    packaging_types.map(el => {
+      const register_name = el.name;
+      const register_object = register(`${register_name}`, {
+        required: false,
+      });
+      packaging_type_registers.push(register_object);
+    });
+    const otherPackagingTypeRegister = register('otherPackagingType');
+
+    const sustainability_level_registers = [];
+    sustainability_levels.map(el => {
+      const register_name = el.name;
+      const register_object = register(`${register_name}`, {
+        required: false,
+      });
+      sustainability_level_registers.push(register_object);
+    });
+    const otherSustainabilityLevelRegister = register('otherSustainability');
+
 
   return (
     <div className={s.form_container}>
         <form onSubmit={handleSubmit(submit)}>
           
             <div className={s.button_container}>
-              <Button color='grey' name='dimensions' onClick={set_is_active_dimensions}>Product dimensions</Button>
+              <Button color='grey' id='dimensions' onClick={set_is_active_btn}>Product dimensions</Button>
             </div>
 
             <div className={[s.btn_content_container, isActiveDimensions ? s.is_active : ''].join(' ')}>
@@ -114,10 +132,10 @@ export default function FormSearchPack() {
             </div>
           
           <div className={s.button_container}>
-            <Button color='grey' name='type' onClick={set_is_active_type}>Product type</Button>
+            <Button color='grey' id='product_type' onClick={set_is_active_btn}>Product type</Button>
           </div>
 
-          <div className={[s.btn_content_container, isActiveType ? s.is_active : ''].join(' ')}>
+          <div className={[s.btn_content_container, isActiveProductType ? s.is_active : ''].join(' ')}>
             <div className={s.checkbox_container}>
                 {
                   product_types.map(el => 
@@ -131,8 +149,56 @@ export default function FormSearchPack() {
                 <Input 
                 type="text" 
                 name='otherType' 
-                placeholder='Another product type'
+                placeholder='your specific product type'
                 {...otherTypeRegister} 
+                />
+            </div>
+          </div>
+
+          <div className={s.button_container}>
+            <Button color='grey' id='packaging_type' onClick={set_is_active_btn}>Desired packaging type</Button>
+          </div>
+
+          <div className={[s.btn_content_container, isActivePackagingType ? s.is_active : ''].join(' ')}>
+            <div className={s.checkbox_container}>
+                {
+                  packaging_types.map(el => 
+                  <CheckboxI 
+                    key={el.id} 
+                    name={packaging_type_registers[el.id].name}
+                    label={packaging_type_registers[el.id].name}
+                    {...packaging_type_registers[el.id]}
+                  />)
+                }
+                <Input 
+                type="text" 
+                name='otherPackagingType' 
+                placeholder='your specific packaging type'
+                {...otherPackagingTypeRegister} 
+                />
+            </div>
+          </div>
+
+          <div className={s.button_container}>
+            <Button color='grey' id='sustainability_level' onClick={set_is_active_btn}>Desired sustainability level</Button>
+          </div>
+
+          <div className={[s.btn_content_container, isActiveSustainabilityType ? s.is_active : ''].join(' ')}>
+            <div className={s.checkbox_container}>
+                {
+                  sustainability_levels.map(el => 
+                  <CheckboxI 
+                    key={el.id} 
+                    name={sustainability_level_registers[el.id].name}
+                    label={sustainability_level_registers[el.id].name}
+                    {...sustainability_level_registers[el.id]}
+                  />)
+                }
+                <Input 
+                type="text" 
+                name='otherSustainability' 
+                placeholder='your specific sustainability feature '
+                {...otherSustainabilityLevelRegister} 
                 />
             </div>
           </div>
