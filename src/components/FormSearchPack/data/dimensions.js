@@ -1,26 +1,22 @@
 export const dimensions = [
     {
-        id: 1,
-        type: 'number',
+        id: 0,
         name: 'length',
-        unit: 'cm',
+        unit: 'centimeters',
+    },
+    {
+        id: 1,
+        name: 'width',
+        unit: 'centimeters',
     },
     {
         id: 2,
-        type: 'number',
-        name: 'width',
-        unit: 'cm',
+        name: 'height',
+        unit: 'centimeters',
     },
     {
         id: 3,
-        type: 'number',
-        name: 'height',
-        unit: 'cm',
-    },
-    {
-        id: 4,
-        type: 'number',
         name: 'weight',
-        unit: 'gramm',
+        unit: 'grams',
     },
 ]

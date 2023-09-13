@@ -8,6 +8,7 @@ import { dimensions } from './data/dimensions';
 import { product_types } from './data/product_types';
 import { packaging_types } from './data/packaging_types';
 import { sustainability_levels } from './data/sustainability_levels';
+import { merchandise_types } from './data/merchandise_types';
 
 
 export default function FormSearchPack() {
@@ -16,6 +17,7 @@ export default function FormSearchPack() {
   const [isActiveProductType, setIsActiveProductType] = useState(false);
   const [isActivePackagingType, setIsActivePackagingType] = useState(false);
   const [isActiveSustainabilityType, setIsActiveSustainabilityType] = useState(false);
+  const [isActiveMerchandiseType, setIsActiveMerchandiseType] = useState(false);
 
   const set_is_active_btn = (event) => {
     const btn_name = event.target.id;
@@ -31,6 +33,9 @@ export default function FormSearchPack() {
     if(btn_name === 'sustainability_level') {
       setIsActiveSustainabilityType(isActiveSustainabilityType ? false : true);
     }
+    if(btn_name === 'merchandise_type') {
+      setIsActiveMerchandiseType(isActiveMerchandiseType ? false : true);
+    }
   }
 
     const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm({
@@ -44,6 +49,10 @@ export default function FormSearchPack() {
       // window.location.reload();
     }
     
+    const merchandiseTypeRegister = register('merchandiseType', {
+      required: true,
+    });
+
     const estimatedSizeRegister = register('estimatedSize', { 
       required: true,
     });
@@ -93,40 +102,67 @@ export default function FormSearchPack() {
     });
     const otherSustainabilityLevelRegister = register('otherSustainability');
 
+    const merchandise_type_registers = [];
+    merchandise_types.map(el => {
+      const register_name = el.name;
+      const register_object = register(`${register_name}`, {
+        required: true,
+      });
+      merchandise_type_registers.push(register_object);
+    });
+
 
   return (
     <div className={s.form_container}>
         <form onSubmit={handleSubmit(submit)}>
+
+          <div className={s.button_container}>
+            <Button color='grey' id='merchandise_type' onClick={set_is_active_btn}>Product category</Button>
+          </div>
+
+          <div className={[s.btn_content_container, isActiveMerchandiseType ? s.is_active : ''].join(' ')}>
+              <select className={[s.inputs_container, s.select].join(' ')} {...merchandiseTypeRegister}>
+                <option value=''>Choose product category...</option>
+                {
+                 merchandise_types.map(el => 
+                  <option value={el.name}>{el.name}</option>
+                )}
+              </select>
+          </div>
           
-            <div className={s.button_container}>
-              <Button color='grey' id='dimensions' onClick={set_is_active_btn}>Product dimensions</Button>
-            </div>
+          <div className={s.button_container}>
+            <Button color='grey' id='dimensions' onClick={set_is_active_btn}>Product dimensions</Button>
+          </div>
 
             <div className={[s.btn_content_container, isActiveDimensions ? s.is_active : ''].join(' ')}>
-              <select className={[s.inputs_container, s.select].join(' ')} {...estimatedSizeRegister}>
+              {/* <select className={[s.inputs_container, s.select].join(' ')} {...estimatedSizeRegister}>
                 <option value=''>Choose estimated size...</option>
                 <option value='small'>small</option>
                 <option value='medium'>medium</option>
                 <option value='large'>large</option>
                 <option value='extra_large'>extra large</option>
-              </select>
+              </select> */}
 
-              <div className={s.inputs_container}>
+              <div className={s.checkbox_container}>
                 <div>
                   <label for='length'>length:</label>
-                  <Input type='number' name='length' placeholder='cm' autoComplete="off" {...lengthRegister}  />
+                  <Input type='number' name='length' placeholder='centimeters' autoComplete="off" {...lengthRegister}  />
+                </div>
+                <div>
+                  <label for='length'>length:</label>
+                  <Input type='number' name='length' placeholder='centimeters' autoComplete="off" {...lengthRegister}  />
                 </div>
                 <div>
                   <label for='width'>width:</label>
-                  <Input type='number' name='width' placeholder='cm' autoComplete="off" {...widthRegister}  />
+                  <Input type='number' name='width' placeholder='centimeters' autoComplete="off" {...widthRegister}  />
                 </div>
                 <div>
                   <label for='height'>height:</label>
-                  <Input type='number' name='height' placeholder='cm' autoComplete="off" {...heightRegister}  />
+                  <Input type='number' name='height' placeholder='centimeters' autoComplete="off" {...heightRegister}  />
                 </div>
                 <div>
                   <label for='weight'>weight:</label>
-                  <Input type='number' name='weight' placeholder='gramm' autoComplete="off" {...weightRegister}  />
+                  <Input type='number' name='weight' placeholder='grams' autoComplete="off" {...weightRegister}  />
                 </div>
               </div>
             </div>
