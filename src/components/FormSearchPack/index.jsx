@@ -18,6 +18,7 @@ export default function FormSearchPack() {
   const [isActivePackagingType, setIsActivePackagingType] = useState(false);
   const [isActiveSustainabilityType, setIsActiveSustainabilityType] = useState(false);
   const [isActiveMerchandiseType, setIsActiveMerchandiseType] = useState(false);
+  const [isSelectedMerchandiseType, setIsSelectedMerchandiseType] = useState(false);
 
   const set_is_active_btn = (event) => {
     const btn_name = event.target.id;
@@ -111,6 +112,15 @@ export default function FormSearchPack() {
       merchandise_type_registers.push(register_object);
     });
 
+    const set_merchandise_type =(event) => {
+      const is_merchandise_type = event.target.value;
+      console.log(is_merchandise_type);
+      if(is_merchandise_type.length > 0) {
+        setIsSelectedMerchandiseType(isSelectedMerchandiseType ? false : true);
+        console.log(is_merchandise_type);
+      }
+    }
+
 
   return (
     <div className={s.form_container}>
@@ -121,13 +131,27 @@ export default function FormSearchPack() {
           </div>
 
           <div className={[s.btn_content_container, isActiveMerchandiseType ? s.is_active : ''].join(' ')}>
-              <select className={[s.inputs_container, s.select].join(' ')} {...merchandiseTypeRegister}>
+              <select id='merchandise_type' className={[s.inputs_container, s.select].join(' ')} onClick={set_merchandise_type} {...merchandiseTypeRegister}>
                 <option value=''>Choose product category...</option>
                 {
                  merchandise_types.map(el => 
                   <option value={el.name}>{el.name}</option>
                 )}
               </select>
+              <div className={[s.merchandise_features_container, isSelectedMerchandiseType ? s.is_active : ''].join(' ')}>
+              <CheckboxI 
+                    // key={el.id} 
+                    name={prodact_type_registers[0].name}
+                    label={prodact_type_registers[0].name}
+                    {...prodact_type_registers[0]}
+              />
+              <CheckboxI 
+                    // key={el.id} 
+                    name={prodact_type_registers[1].name}
+                    label={prodact_type_registers[1].name}
+                    {...prodact_type_registers[1]}
+              />
+              </div>
           </div>
           
           <div className={s.button_container}>

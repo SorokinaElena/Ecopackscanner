@@ -37,6 +37,20 @@
     background-color: #aeceb9;
 }
 
+.merchandise_features_container {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+.merchandise_features_container.is_active {
+    display: flex;
+    background-color: #aeceb9;
+}
+
 .inputs_container.select {
     width: 100%;
     border: none;
