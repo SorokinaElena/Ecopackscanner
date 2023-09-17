@@ -3,6 +3,9 @@ import s from './index.module.css';
 
 const CheckboxI = forwardRef((props, ref) => {
 
+  const addSpacesBeforeUppercase = (str) => {
+    return str.replace(/([A-Z])/g, ' $1')
+  };
 
   return (
     <div>
@@ -13,7 +16,7 @@ const CheckboxI = forwardRef((props, ref) => {
                 ref={ref} 
                 {...props}
             />
-        {props.name}
+        {addSpacesBeforeUppercase(props.name).toLowerCase()}
         </label>
     </div>
     // <input {...props} ref={ref} className={s.form_input}/>

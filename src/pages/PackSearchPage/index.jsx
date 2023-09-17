@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import s from './index.module.css';
 import pack_search_img from '../../media/pack_search_img_close-up-sustainable-coffee-cup-alternatives_3_small.png';
 import { Context } from '../../context';
-import FormSearchPack from '../../components/FormSearchPack';
+import FormSearchPack1 from '../../components/FormSearchPack1';
 
 export default function PackSearchPage() {
 
@@ -14,7 +14,7 @@ export default function PackSearchPage() {
   return (
     <div className={s.pack_search_page}>
       <img className={s.pack_search_img} src={pack_search_img} alt="close-up-sustainable-coffee-cup-alternatives" />
-      <FormSearchPack />
+      <FormSearchPack1 />
     </div>
   )
 }

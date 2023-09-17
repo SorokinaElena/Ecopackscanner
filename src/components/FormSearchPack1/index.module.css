@@ -1,0 +1,107 @@
+.form_container {
+    position: absolute;
+    right: 0;
+    width: 45%;
+    height: 100%;
+}
+
+.inputs_container {
+    flex-direction: row;
+    gap: 5px;
+}
+
+.checkbox_container {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox_container,
+.inputs_container {
+    display: flex;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    color: #2D2D2D;   
+}
+
+.button_container {
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+    width: 90%;
+}
+
+.btn_content_container {
+    display: none;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 20px;
+    padding: 20px;
+    gap: 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+    box-shadow: 10px 10px 12px rgba(141, 140, 146, 0.9);
+}
+
+.btn_content_container.is_active {
+    display: flex;
+    background-color: #aeceb9;
+}
+
+.inputs_container.select {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 4px 0;
+    font-weight: 400;
+    font-size: 18px;
+    color: #1A1A1A;
+}
+
+.inputs_container.select:focus {
+    outline: none;
+    border-color: rgba(0, 170, 80, 0.75);
+}
+
+
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 20px; */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 22px;
+    cursor: pointer;
+    background-color: rgba(166, 165, 173, 0.75);
+    border: 1px solid transparent;
+    color: white;
+    /* padding: 10px; */
+    gap: 10px;
+}
+
+.title:hover {
+    background-color: rgba(0, 170, 80, 0.75);
+    transition: all .4s ease; 
+}
+
+.merchandise_features_container {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+.merchandise_features_container.is_active {
+    display: flex;
+    background-color: #aeceb9;
+}

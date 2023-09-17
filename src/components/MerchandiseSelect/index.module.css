@@ -1,0 +1,15 @@
+.inputs_container.select {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 4px 0;
+    font-weight: 400;
+    font-size: 18px;
+    color: #1A1A1A;
+}
+
+.inputs_container.select:focus {
+    outline: none;
+    border-color: rgba(0, 170, 80, 0.75);
+}
