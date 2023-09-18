@@ -9,7 +9,7 @@ axios.defaults.baseURL = 'http://localhost:5001';
 
 const API_URL = "/package";
 
-const pack_search_req = ({category, estimatedSize, length, width, height, weight, biodegradable, compostable, recyclable, reusable, otherSustainability, liquid, solid, powder, granules, fragile, perishable, otherType, flexible, rigid, protective, transparent, opaque, otherPackagingType}) => {
+const pack_search_req = ({category, estimatedSize, length, width, height, weight, biodegradable, compostable, recyclable, reusable, otherSustainability, liquid, solid, powder, granules, fragile, perishable, otherType, flexible, rigid, protective, transparent, opaque, otherPackagingType, preservationNeeds, modifiedAtmospherePackaging, electrostaticDischargeProtection, tamperProtection, secureBatteriesForShipping, separateCordsAndAccessories, damageProtectionLevel, materialSensitivity, moistureProtection, leakproofRequirements, uvProtection, fragilityLevel, assemblyInstructions, materialCare, outdoor, indoor, durability, weatherproofing}) => {
   return axios
     .post(API_URL + '/create', {
       category, 
@@ -36,6 +36,25 @@ const pack_search_req = ({category, estimatedSize, length, width, height, weight
       transparent, 
       opaque, 
       otherPackagingType,
+
+      preservationNeeds,
+      modifiedAtmospherePackaging,
+      electrostaticDischargeProtection,
+      tamperProtection,
+      secureBatteriesForShipping,
+      separateCordsAndAccessories,
+      damageProtectionLevel,
+      materialSensitivity,
+      moistureProtection,
+      leakproofRequirements,
+      uvProtection,
+      fragilityLevel,
+      assemblyInstructions,
+      materialCare,
+      outdoor,
+      indoor,
+      durability,
+      weatherproofing,
     })
     .then((response) => {
       if (response.data) {
