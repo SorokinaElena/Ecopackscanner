@@ -9,9 +9,13 @@ import { dimensions } from './data/dimensions';
 import { product_types } from './data/product_types';
 import { packaging_types } from './data/packaging_types';
 import { sustainability_levels } from './data/sustainability_levels';
+import formService from '../../services/form.service';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function FormSearchPack1() {
+
+    const navigate = useNavigate();
 
     const [isActiveMerchandiseType, setIsActiveMerchandiseType] = useState(false);
     const [isActiveDimensions, setIsActiveDimensions] = useState(false);
@@ -57,12 +61,31 @@ export default function FormSearchPack1() {
         mode: 'onBlur'
       });
     
-    const submit = (data) => {
+    const submit = async (data) => {
+      console.log(data);
+      data.length = parseFloat(data.length); 
+      data.width = parseFloat(data.width); 
+      data.height = parseFloat(data.height); 
+      data.weight = parseFloat(data.weight); 
       console.log(data);
       // alert('Your request is being processed');
       // navigate('/offer');
       // window.location.reload();
-    }
+        try {
+          await formService.pack_search_req({...data}).then(
+            (response) => {
+              navigate('/about_us');
+              window.location.reload(); // обнуляет состояние
+            },
+            (error) => {
+              console.log(error);
+              // alert(`user with email: ${data.email} already exists`);
+            }
+          );
+        } catch (err) {
+          console.log(err);
+        }
+    };
 
     const features_registers = [];
     target_merchandise_type_features_register_arr.map(el => {
