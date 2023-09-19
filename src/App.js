@@ -11,6 +11,7 @@ import { Context } from './context';
 import ModalSignUp from './components/ModalSignUp';
 import ModalLogIn from './components/ModalLogIn';
 import ProducerAccountPage from './pages/ProducerAccountPage';
+import CustomerAccountPage from './pages/CustomerAccountPage';
 import Map from './pages/Map';
 
 
@@ -28,13 +29,26 @@ function App() {
     password: '',
   });
   const [isAuthUser, setIsAuthUser] = useState(false);
+  const [authUser, setAuthUser] = useState({
+    access_token: '',
+    details: {
+      _id: '',
+      userType: '',
+      companyName: '',
+      country: '',
+      adress: '',
+      email: '',
+    },
+    isAdmin: false,
+  });
+  const [userType, setUserType] = useState('');
   // const [pageName, setPageName] = useState('')
 
   console.log(isAuthUser);
 
   return (
     <div className="App">
-      <Context.Provider value={{modal, setModal, modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, user, setUser, isAuthUser, setIsAuthUser}}>
+      <Context.Provider value={{modal, setModal, modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, user, setUser, isAuthUser, setIsAuthUser, authUser, setAuthUser, userType, setUserType}}>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
@@ -42,6 +56,7 @@ function App() {
             <Route path='producer_data_form' element={<ProducerDataFormPage />} />
             <Route path='about_us' element={<AboutUsPage />} />
             <Route path='producer_account' element={<ProducerAccountPage />} />
+            <Route path='customer_account' element={<CustomerAccountPage />} />
             <Route path='map' element={<Map />} />
           </Route>
         </Routes>

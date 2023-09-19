@@ -11,20 +11,33 @@ import { Context } from '../../context';
 
 export default function HomePage() {
 
+  const { userType, setUserType } = useContext(Context);
 // const { pageName, setPageName } = useContext(Context);
 // setPageName('home_page');
 // console.log(pageName);
+
+const get_unauthuser_type = (event) => {
+  const button_name = event.target.id;
+  console.log(button_name);
+  if(button_name === 'producer') {
+    setUserType(button_name);
+  }
+  if(button_name === 'customer') {
+    setUserType(button_name);
+  }
+}; 
+
 
 
   return (
     <div className={s.home_page}>
       <img className={s.home_img} src={home_img} alt="cartoon-concept-recycle" />
       <div className={s.choice_btns_container}>
-        <Link to='producer_data_form'>
-          <Button color='grey_main_page'><AiOutlineCodeSandbox className={s.icon} /> Producer</Button>
+        <Link to='pack_search'>
+          <Button id='producer' color='grey_main_page' onClick={get_unauthuser_type}><AiOutlineCodeSandbox className={s.icon} /> Producer</Button>
         </Link>
         <Link to='pack_search'>
-          <Button color='grey_main_page'><AiOutlineCodepen className={s.icon}/> Customer</Button>
+          <Button id='customer' color='grey_main_page' onClick={get_unauthuser_type}><AiOutlineCodepen className={s.icon}/> Customer</Button>
         </Link>
       </div>
     </div>

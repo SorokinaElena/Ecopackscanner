@@ -19,10 +19,10 @@ export default function FormSignUp({title, descr, button, form_type, info_text, 
       console.log(data);
       const user_temp = data;
       
-      reset({
-        email: '',
-        password: '',
-      });
+      // reset({
+      //   email: '',
+      //   password: '',
+      // });
         try {
           await authService.signup({...user_temp}).then(
             (response) => {
@@ -31,7 +31,8 @@ export default function FormSignUp({title, descr, button, form_type, info_text, 
               setUser(user_temp);
               setIsAuthUser(true);
               setModalSignUp(false);
-              navigate('/producer_account');
+              if(user_temp.userType === 'producer') navigate('/producer_account');
+              if(user_temp.userType === 'customer') navigate('/customer_account');
               // window.location.reload(); // обнуляет состояние
             },
             (error) => {

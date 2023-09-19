@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import s from './index.module.css';
 import { useForm } from 'react-hook-form';
 import Input from '../Input';
@@ -11,12 +11,17 @@ import { packaging_types } from './data/packaging_types';
 import { sustainability_levels } from './data/sustainability_levels';
 import formService from '../../services/form.service';
 import { useNavigate } from 'react-router-dom';
+import { Context } from '../../context';
 
 
 export default function FormSearchPack1() {
 
     const navigate = useNavigate();
 
+    const { authUser, setAuthUser, userType, setUserType } = useContext(Context);
+    console.log(authUser);
+
+    const [isActivePackName, setIsActivePackName] = useState(false);
     const [isActiveMerchandiseType, setIsActiveMerchandiseType] = useState(false);
     const [isActiveDimensions, setIsActiveDimensions] = useState(false);
     const [isActiveProductType, setIsActiveProductType] = useState(false);
@@ -40,6 +45,9 @@ export default function FormSearchPack1() {
     
     const set_is_active_btn = (event) => {
         const title_name = event.target.id;
+        if(title_name === 'name') {
+          setIsActivePackName(isActivePackName ? false : true);
+        }
         if(title_name === 'merchandise_type') {
           setIsActiveMerchandiseType(isActiveMerchandiseType ? false : true);
         }
@@ -75,11 +83,10 @@ export default function FormSearchPack1() {
           await formService.pack_search_req({...data}).then(
             (response) => {
               navigate('/about_us');
-              window.location.reload(); // обнуляет состояние
+              // window.location.reload(); // обнуляет состояние
             },
             (error) => {
               console.log(error);
-              // alert(`user with email: ${data.email} already exists`);
             }
           );
         } catch (err) {
@@ -106,10 +113,22 @@ export default function FormSearchPack1() {
         target_features_arr.push(feature_item);
     });
 
+    const userRegister = register('_id', {
+      required: false,
+    });
+
+    const nameRegister = register('name', { 
+      required: true,
+    });
+
+    const estimatedSizeRegister = register('estimatedSize', { 
+      required: true,
+    });
+
     const merchandiseTypeRegister = register('category', {
         required: true,
       });
-    
+
     const lengthRegister = register('length', { 
         required: true,
       });
@@ -166,6 +185,32 @@ export default function FormSearchPack1() {
     <div className={s.form_container}>
         <form onSubmit={handleSubmit(submit)}>
 
+            {
+              authUser.details._id !== ''
+              ? <div className={s.btn_content_container}>
+                  <div className={s.checkbox_container}>
+                      <Input type='hidden' name='user' value={authUser.details._id} {...userRegister}  />
+                  </div>
+                </div>
+              : ''
+            }
+
+            {
+              authUser.details.userType === 'producer' || userType === 'producer'
+              ? <>
+                <div className={s.button_container}>
+                  <div className={s.title} id='name' onClick={set_is_active_btn}>Name of a packaging</div>
+                </div>
+                <div className={[s.btn_content_container, isActivePackName ? s.is_active : ''].join(' ')}>
+                  <div className={s.checkbox_container}>
+                  < Input type='text' name='name' placeholder='Enter the name of the packaging you want to add...' autoComplete="off" {...nameRegister}  />
+                  </div>
+                </div>  
+                </>
+              : ''
+            }
+            
+            
             <div className={s.button_container}>
                 <div className={s.title} id='merchandise_type' onClick={set_is_active_btn}>Product category</div>
             </div>
@@ -194,6 +239,17 @@ export default function FormSearchPack1() {
                 <div className={s.title} id='dimensions' onClick={set_is_active_btn}>Product dimensions</div>
             </div>
             <div className={[s.btn_content_container, isActiveDimensions ? s.is_active : ''].join(' ')}>
+                {
+                  authUser.details.userType === 'producer' || userType === 'producer'
+                  ?  <select className={[s.inputs_container, s.select].join(' ')} {...estimatedSizeRegister}>
+                      <option value=''>Choose estimated size...</option>
+                      <option value='small'>small</option>
+                      <option value='medium'>medium</option>
+                      <option value='large'>large</option>
+                      <option value='extra_large'>extra large</option>
+                    </select>
+                  : ''
+                }
                 <div className={s.checkbox_container}>
                     <div>
                     <label htmlFor='length'>length:</label>

@@ -5,7 +5,7 @@ import authService from '../../services/auth.service';
 import Button from '../../components/Button';
 
 
-export default function ProducerAccountPage() {
+export default function CustomerAccountPage() {
 
   const { user, setUser, isAuthUser, setIsAuthUser, authUser, setAuthUser } = useContext(Context);
   // console.log(user); 
@@ -19,7 +19,7 @@ export default function ProducerAccountPage() {
 
   return (
     <div>
-        <p>ProducerAccountPage</p>
+        <p>CustomerAccountPage</p>
         <p>user name: {authUser.details.companyName}</p>   
         <p>user type: {authUser.details.userType}</p> 
         <p>user id: {authUser.details._id}</p> 

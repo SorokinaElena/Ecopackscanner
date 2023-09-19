@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'; 
+import React, { useContext, useEffect } from 'react'; 
 import Button from '../Button';
 import Input from '../Input';
 import {useForm} from 'react-hook-form';
@@ -16,24 +16,24 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
     const submit = async (data) => {
       console.log(data);
       const user_temp = data;
-      
-      reset({
-        email: '',
-        password: '',
-      });
+       // reset({
+        //   email: '',
+        //   password: '',
+        // });
       if(['login'].includes(form_type)) {
         try {
           await authService.login({...user_temp}).then(
             (response) => {
-              setUser(user_temp);
+              // setUser(user_temp);
               setIsAuthUser(true);
               setModalLogIn(false);
-              navigate('/producer_account');
+              if(user_temp.userType === 'producer') navigate('/producer_account');
+              if(user_temp.userType === 'customer') navigate('/customer_account');
               // window.location.reload();
             },
             (error) => {
               console.log(error);
-              alert(`wrong login or password`);
+              alert(`wrong user type, login or password`);
             }
           );
         } catch (err) {
@@ -64,13 +64,16 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
       }     
     }
 
-      console.log(user);
-      console.log(isAuthUser);
+      // console.log(user);
+      // console.log(isAuthUser);
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
       mode: 'onBlur',
   }); 
 
+    const userTypeRegister = register('userType', {
+      required: '* The field "User type" is required',
+    });
     const emailRegister = register('email', {
       required: '* The field "E-mail" is required',
       pattern: {
@@ -89,6 +92,12 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
         <p className={s.form_title}> {title} </p>
 
         <p className={s.form_descr}>{info_text}</p>
+
+        <select className={s.form_input} {...userTypeRegister}>
+          <option value=''>User type</option>
+          <option value='producer'>Packaging producer</option>
+          <option value='customer'>Customer</option>
+        </select>
 
         <Input 
             type="text"

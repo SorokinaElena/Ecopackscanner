@@ -15,7 +15,7 @@ import authService from '../../services/auth.service';
 
 export default function Nav() {
 
-  const { modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, modal, setModal, user, setUser, isAuthUser, setIsAuthUser } = useContext(Context);
+  const { modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, modal, setModal, user, setUser, isAuthUser, setIsAuthUser, authUser, setAuthUser } = useContext(Context);
 
   const [menuActive, setMenuActive] = useState(false);
 
@@ -37,6 +37,18 @@ export default function Nav() {
   const sign_out = () => {
     authService.logout();
     setIsAuthUser(false);
+    setAuthUser({
+      access_token: '',
+      details: {
+        _id: '',
+        userType: '',
+        companyName: '',
+        country: '',
+        adress: '',
+        email: '',
+      },
+      isAdmin: false,
+    })
   }
 
   return (
