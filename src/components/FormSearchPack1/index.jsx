@@ -12,6 +12,10 @@ import { sustainability_levels } from './data/sustainability_levels';
 import formService from '../../services/form.service';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../../context';
+import { BiSolidDownArrow } from 'react-icons/bi';
+import { BiDownArrow } from 'react-icons/bi';
+import { BiSolidUpArrow } from 'react-icons/bi';
+import { BiUpArrow } from 'react-icons/bi';
 
 
 export default function FormSearchPack1() {
@@ -48,19 +52,19 @@ export default function FormSearchPack1() {
         if(title_name === 'name') {
           setIsActivePackName(isActivePackName ? false : true);
         }
-        if(title_name === 'merchandise_type') {
+        if(title_name === 'merchandise_type' || title_name === 'merchandise_type_1' || title_name === 'merchandise_type_2') {
           setIsActiveMerchandiseType(isActiveMerchandiseType ? false : true);
         }
-        if(title_name === 'dimensions') {
+        if(title_name === 'dimensions' || title_name === 'dimensions_1' || title_name === 'dimensions_2') {
           setIsActiveDimensions(isActiveDimensions ? false : true);
         }
-        if(title_name === 'product_type') {
+        if(title_name === 'product_type' || title_name === 'product_type_1' || title_name === 'product_type_2') {
           setIsActiveProductType(isActiveProductType ? false : true);
         }
-        if(title_name === 'packaging_type') {
+        if(title_name === 'packaging_type' || title_name === 'packaging_type_1' || title_name === 'packaging_type_2') {
           setIsActivePackagingType(isActivePackagingType ? false : true);
         }
-        if(title_name === 'sustainability_level') {
+        if(title_name === 'sustainability_level' || title_name === 'sustainability_level_1' || title_name === 'sustainability_level_2') {
           setIsActiveSustainabilityType(isActiveSustainabilityType ? false : true);
         }
       };
@@ -114,6 +118,10 @@ export default function FormSearchPack1() {
     });
 
     const userRegister = register('_id', {
+      required: false,
+    });
+
+    const userTypeRegister = register('userType', {
       required: false,
     });
 
@@ -192,14 +200,25 @@ export default function FormSearchPack1() {
                       <Input type='hidden' name='user' value={authUser.details._id} {...userRegister}  />
                   </div>
                 </div>
-              : ''
+              : <div className={s.btn_content_container}>
+                  <div className={s.checkbox_container}>
+                      <Input type='hidden' name='user_type' value={userType} {...userTypeRegister}  />
+                  </div>
+                </div>
             }
 
             {
-              authUser.details.userType === 'producer' || userType === 'producer'
+              (authUser.details.userType === 'producer' || userType === 'producer') && authUser.details._id !== ''
               ? <>
                 <div className={s.button_container}>
-                  <div className={s.title} id='name' onClick={set_is_active_btn}>Name of a packaging</div>
+                  <div className={s.title} id='name' onClick={set_is_active_btn}>
+                    Name of a packaging
+                  {
+                    isActivePackName 
+                    ? <BiUpArrow className={s.icon} id='name_1' onClick={set_is_active_btn} /> 
+                    : < BiDownArrow className={s.icon} id='name_2' onClick={set_is_active_btn} />
+                  }
+                    </div>
                 </div>
                 <div className={[s.btn_content_container, isActivePackName ? s.is_active : ''].join(' ')}>
                   <div className={s.checkbox_container}>
@@ -212,7 +231,14 @@ export default function FormSearchPack1() {
             
             
             <div className={s.button_container}>
-                <div className={s.title} id='merchandise_type' onClick={set_is_active_btn}>Product category</div>
+                <div className={s.title} id='merchandise_type' onClick={set_is_active_btn}>
+                  Product category
+                  {
+                    isActiveMerchandiseType
+                    ? <BiUpArrow className={s.icon} id='merchandise_type_1' onClick={set_is_active_btn}/>  
+                    : <BiDownArrow className={s.icon} id='merchandise_type_2' onClick={set_is_active_btn}/> 
+                  }
+                </div>
             </div>
             <div className={[s.btn_content_container, isActiveMerchandiseType ? s.is_active : ''].join(' ')}>
                 <select /*name='category' value={merchandiseTypeValue} onChange={changeSelect}*/ onClick={get_option_value} className={[s.inputs_container, s.select].join(' ')} {...merchandiseTypeRegister}>
@@ -236,11 +262,18 @@ export default function FormSearchPack1() {
             </div>
 
             <div className={s.button_container}>
-                <div className={s.title} id='dimensions' onClick={set_is_active_btn}>Product dimensions</div>
+                <div className={s.title} id='dimensions' onClick={set_is_active_btn}>
+                  Product dimensions
+                  {
+                    isActiveDimensions 
+                    ? <BiUpArrow className={s.icon} id='dimensions_1' onClick={set_is_active_btn} /> 
+                    : <BiDownArrow className={s.icon} id='dimensions_2' onClick={set_is_active_btn} />
+                  }
+                  </div>
             </div>
             <div className={[s.btn_content_container, isActiveDimensions ? s.is_active : ''].join(' ')}>
                 {
-                  authUser.details.userType === 'producer' || userType === 'producer'
+                  (authUser.details.userType === 'producer' || userType === 'producer') && authUser.details._id !== ''
                   ?  <select className={[s.inputs_container, s.select].join(' ')} {...estimatedSizeRegister}>
                       <option value=''>Choose estimated size...</option>
                       <option value='small'>small</option>
@@ -271,7 +304,14 @@ export default function FormSearchPack1() {
             </div>
 
             <div className={s.button_container}>
-                <div className={s.title} id='product_type' onClick={set_is_active_btn}>Product type</div>
+                <div className={s.title} id='product_type' onClick={set_is_active_btn}>
+                  Product type
+                  {
+                    isActiveProductType 
+                    ? <BiUpArrow className={s.icon} id='product_type_1' onClick={set_is_active_btn} /> 
+                    : <BiDownArrow className={s.icon} id='product_type_2' onClick={set_is_active_btn} />
+                  }
+                  </div>
             </div>
             <div className={[s.btn_content_container, isActiveProductType ? s.is_active : ''].join(' ')}>
                 <div className={s.checkbox_container}>
@@ -294,7 +334,14 @@ export default function FormSearchPack1() {
             </div>
 
             <div className={s.button_container}>
-                <div className={s.title} id='packaging_type' onClick={set_is_active_btn}>Desired packaging type</div >
+                <div className={s.title} id='packaging_type' onClick={set_is_active_btn}>
+                  Desired packaging type
+                  {
+                    isActivePackagingType 
+                    ? <BiUpArrow className={s.icon} id='packaging_type_1' onClick={set_is_active_btn} /> 
+                    : <BiDownArrow className={s.icon} id='packaging_type_2' onClick={set_is_active_btn} />
+                  }
+                  </div >
             </div>
             <div className={[s.btn_content_container, isActivePackagingType ? s.is_active : ''].join(' ')}>
             <div className={s.checkbox_container}>
@@ -317,7 +364,14 @@ export default function FormSearchPack1() {
           </div>
 
           <div className={s.button_container}>
-            <div className={s.title} id='sustainability_level' onClick={set_is_active_btn}>Desired sustainability level</div>
+            <div className={s.title} id='sustainability_level' onClick={set_is_active_btn}>
+              Desired sustainability level
+                {
+                  isActiveSustainabilityType 
+                  ? <BiUpArrow className={s.icon} id='sustainability_level_1' onClick={set_is_active_btn} /> 
+                  : <BiDownArrow className={s.icon} id='sustainability_level_2' onClick={set_is_active_btn} />
+                }
+              </div>
           </div>
 
           <div className={[s.btn_content_container, isActiveSustainabilityType ? s.is_active : ''].join(' ')}>
