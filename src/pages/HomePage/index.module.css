@@ -29,3 +29,37 @@
     height: 30px;
     fill:  white;
 }
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .home_page {
+        padding: 0;
+    }
+
+    .home_img {
+        /* width: 767px; */
+        /* height: auto; */
+        position: absolute;
+        left: -150px;
+    }
+
+    .choice_btns_container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1439px) {
+    .home_page {
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home_img {
+        width: 1439px;
+        height: auto;
+    }
+}

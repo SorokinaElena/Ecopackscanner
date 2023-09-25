@@ -23,7 +23,6 @@ export default function FormSearchPack1() {
     const navigate = useNavigate();
 
     const { authUser, setAuthUser, userType, setUserType } = useContext(Context);
-    console.log(authUser);
 
     const [isActivePackName, setIsActivePackName] = useState(false);
     const [isActiveMerchandiseType, setIsActiveMerchandiseType] = useState(false);
@@ -74,19 +73,16 @@ export default function FormSearchPack1() {
       });
     
     const submit = async (data) => {
-      console.log(data);
       data.length = parseFloat(data.length); 
       data.width = parseFloat(data.width); 
       data.height = parseFloat(data.height); 
       data.weight = parseFloat(data.weight); 
       console.log(data);
-      // alert('Your request is being processed');
-      // navigate('/offer');
-      // window.location.reload();
         try {
           await formService.pack_search_req({...data}).then(
             (response) => {
-              navigate('/about_us');
+              console.log(response)
+              navigate('/search_results');
               // window.location.reload(); // обнуляет состояние
             },
             (error) => {
@@ -117,16 +113,16 @@ export default function FormSearchPack1() {
         target_features_arr.push(feature_item);
     });
 
-    const userRegister = register('_id', {
+    const userRegister = register('user_id', {
       required: false,
     });
 
-    const userTypeRegister = register('userType', {
-      required: false,
-    });
+    // const userTypeRegister = register('userType', {
+    //   required: true,
+    // });
 
     const nameRegister = register('name', { 
-      required: true,
+      required: false,
     });
 
     const estimatedSizeRegister = register('estimatedSize', { 
@@ -137,18 +133,18 @@ export default function FormSearchPack1() {
         required: true,
       });
 
-    const lengthRegister = register('length', { 
-        required: true,
-      });
-      const widthRegister = register('width', { 
-        required: true,
-      });
-      const heightRegister = register('height', { 
-        required: true,
-      });
-      const weightRegister = register('weight', { 
-        required: true,
-      });
+    // const lengthRegister = register('length', { 
+    //     required: true,
+    //   });
+    //   const widthRegister = register('width', { 
+    //     required: true,
+    //   });
+    //   const heightRegister = register('height', { 
+    //     required: true,
+    //   });
+    //   const weightRegister = register('weight', { 
+    //     required: true,
+    //   });
 
     const prodact_type_registers = [];
     product_types.map(el => {
@@ -158,8 +154,8 @@ export default function FormSearchPack1() {
       });
       prodact_type_registers.push(register_object);
     });
-    console.log(prodact_type_registers);
-    console.log(prodact_type_registers[0]);
+    // console.log(prodact_type_registers);
+    // console.log(prodact_type_registers[0]);
     const otherTypeRegister = register('otherType', {
         required: false,
       });
@@ -200,15 +196,16 @@ export default function FormSearchPack1() {
                       <Input type='hidden' name='user' value={authUser.details._id} {...userRegister}  />
                   </div>
                 </div>
-              : <div className={s.btn_content_container}>
-                  <div className={s.checkbox_container}>
-                      <Input type='hidden' name='user_type' value={userType} {...userTypeRegister}  />
-                  </div>
-                </div>
+              : ''
+                // <div className={s.btn_content_container}>
+                //   <div className={s.checkbox_container}>
+                //       <Input type='hidden' name='user_type' value={userType} {...userTypeRegister}  />
+                //   </div>
+                // </div>
             }
 
             {
-              (authUser.details.userType === 'producer' || userType === 'producer') && authUser.details._id !== ''
+              authUser.details.userType === 'producer' && authUser.details._id !== ''
               ? <>
                 <div className={s.button_container}>
                   <div className={s.title} id='name' onClick={set_is_active_btn}>
@@ -272,18 +269,14 @@ export default function FormSearchPack1() {
                   </div>
             </div>
             <div className={[s.btn_content_container, isActiveDimensions ? s.is_active : ''].join(' ')}>
-                {
-                  (authUser.details.userType === 'producer' || userType === 'producer') && authUser.details._id !== ''
-                  ?  <select className={[s.inputs_container, s.select].join(' ')} {...estimatedSizeRegister}>
-                      <option value=''>Choose estimated size...</option>
-                      <option value='small'>small</option>
-                      <option value='medium'>medium</option>
-                      <option value='large'>large</option>
-                      <option value='extra_large'>extra large</option>
+                    <select className={[s.inputs_container, s.select].join(' ')} {...estimatedSizeRegister}>
+                      <option value=''>Choose estimated size - max length of one side up to...</option>
+                      <option value='small'>small - 20 cm</option>
+                      <option value='medium'>medium - 50 cm</option>
+                      <option value='large'>large - 100 cm</option>
+                      <option value='extra_large'>extra large - 150 cm</option>
                     </select>
-                  : ''
-                }
-                <div className={s.checkbox_container}>
+                {/* <div className={s.checkbox_container}>
                     <div>
                     <label htmlFor='length'>length:</label>
                     <Input type='number' name='length' placeholder='centimeters' autoComplete="off" {...lengthRegister}  />
@@ -300,7 +293,7 @@ export default function FormSearchPack1() {
                     <label htmlFor='weight'>weight:</label>
                     <Input type='number' name='weight' placeholder='grams' autoComplete="off" {...weightRegister}  />
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <div className={s.button_container}>
@@ -394,11 +387,16 @@ export default function FormSearchPack1() {
             </div>
           </div>            
 
-            
+          {
+            authUser.details.userType === 'producer' && authUser.details._id !== ''
+            ? <div className={s.button_container}>
+                <Button color='green'>Add packaging</Button>
+              </div>
+            : <div className={s.button_container}>
+                <Button color='green'>Search packaging</Button>
+              </div>
+          }  
 
-            <div className={s.button_container}>
-            <Button color='green'>Search</Button>
-            </div>
         </form>
     </div>
   )

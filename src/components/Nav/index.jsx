@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import s from './index.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../Button';
 import { Context } from '../../context';
 import { AiOutlineMenuFold } from 'react-icons/ai';
@@ -15,24 +15,22 @@ import authService from '../../services/auth.service';
 
 export default function Nav() {
 
-  const { modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, modal, setModal, user, setUser, isAuthUser, setIsAuthUser, authUser, setAuthUser } = useContext(Context);
+  const navigate = useNavigate();
+
+  const { modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, modal, setModal, user, setUser, isAuthUser, setIsAuthUser, authUser, setAuthUser, userType, setUserType } = useContext(Context);
 
   const [menuActive, setMenuActive] = useState(false);
 
   const set_menu_active = () => {
-    setMenuActive(menuActive ? false : true)
+    setMenuActive(menuActive ? false : true);
+
   }
 
   let btn_status_unauthuser = {};
   let btn_status_authuser = {};
 
-  console.log(isAuthUser);
-
   isAuthUser ? btn_status_unauthuser = {display: 'none'} : btn_status_unauthuser = {display: 'flex'};
   isAuthUser ? btn_status_authuser = {display: 'flex'} : btn_status_authuser = {display: 'none'};
-
-  console.log(btn_status_unauthuser)
-  console.log(btn_status_authuser)
 
   const sign_out = () => {
     authService.logout();
@@ -49,7 +47,15 @@ export default function Nav() {
       },
       isAdmin: false,
     })
-  }
+  };
+
+  const navigate_to_account = () => {
+    if(authUser.details.userType === 'producer') {
+      navigate('/producer_account')
+    } else {
+      navigate('/customer_account')
+    }
+  } 
 
   return (
     <nav className={s.nav}>
@@ -79,15 +85,16 @@ export default function Nav() {
         </Button>
       </Link>
 
-      <Link to='/producer_account' style={{textDecoration: 'none'}}>
+      {/* <Link to={authUser.details.userType === 'producer' ? '/producer_account' : 'custommer_account'} style={{textDecoration: 'none'}}> */}
         <Button 
           color='green' 
           style={btn_status_authuser}
+          onClick={navigate_to_account}
           >
           <PiUserGear className={s.icon} />
           Your profile
         </Button>
-      </Link>    
+      {/* </Link>     */}
       
       <Link to='/' style={{textDecoration: 'none'}}>
         <Button 
@@ -116,7 +123,7 @@ export default function Nav() {
           <Link to='about_us' onClick={set_menu_active}>{'About us'.toUpperCase()}</Link>  
           <Link to='map' onClick={set_menu_active}>{'Packaging producers'.toUpperCase()}</Link> 
           <Link onClick={set_menu_active}>{'Why ecopackaging'.toUpperCase()}</Link>
-          <Link to='pack_search' onClick={set_menu_active}>{'Ecopackaging Search'.toUpperCase()}</Link> 
+          {/* <Link to='/' onClick={set_menu_active}>{'Ecopackaging Search'.toUpperCase()}</Link>  */}
         </div>
 
         <div className={s.contacts_container}>

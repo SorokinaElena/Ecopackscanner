@@ -13,26 +13,27 @@ export default function FormSignUp({title, descr, button, form_type, info_text, 
 
     const navigate = useNavigate();
 
-    const { user, setUser, modalSignUp, setModalSignUp, isAuthUser, setIsAuthUser } = useContext(Context);
+    const { user, setUser, modalSignUp, setModalSignUp, isAuthUser, setIsAuthUser, userType, setUserType } = useContext(Context);
 
     const submit = async (data) => {
       console.log(data);
-      const user_temp = data;
+      // const user_temp = data;
       
       // reset({
       //   email: '',
       //   password: '',
       // });
         try {
-          await authService.signup({...user_temp}).then(
+          await authService.signup({...data}).then(
             (response) => {
               // check for token and user already exists with 200
               //   console.log("Sign up successfully", response);
-              setUser(user_temp);
+              // setUser(user_temp);
               setIsAuthUser(true);
+              setUserType(response.details.userType);
               setModalSignUp(false);
-              if(user_temp.userType === 'producer') navigate('/producer_account');
-              if(user_temp.userType === 'customer') navigate('/customer_account');
+              if(response.details.userType === 'producer') navigate('/producer_account');
+              if(response.details.userType === 'customer') navigate('/customer_account');
               // window.location.reload(); // обнуляет состояние
             },
             (error) => {
@@ -43,10 +44,7 @@ export default function FormSignUp({title, descr, button, form_type, info_text, 
         } catch (err) {
           console.log(err);
         }
-    }
-
-      console.log(user);
-      console.log(isAuthUser);
+    };
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
       mode: 'onBlur',

@@ -65,3 +65,11 @@
     color: white;
     transition: all .4s ease; 
 }
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .btn {
+        font-weight: 500;
+        font-size: 19px;
+        padding: 8px;
+    }
+}

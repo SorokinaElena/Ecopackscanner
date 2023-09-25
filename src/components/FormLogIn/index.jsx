@@ -11,24 +11,25 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
 
     const navigate = useNavigate();
 
-    const { user, setUser, modalLogIn, setModalLogIn, isAuthUser, setIsAuthUser } = useContext(Context);
+    const { user, setUser, modalLogIn, setModalLogIn, isAuthUser, setIsAuthUser, userType, setUserType } = useContext(Context);
 
     const submit = async (data) => {
-      console.log(data);
-      const user_temp = data;
+      // const user_temp = data;
        // reset({
         //   email: '',
         //   password: '',
         // });
       if(['login'].includes(form_type)) {
         try {
-          await authService.login({...user_temp}).then(
+          await authService.login({...data}).then(
             (response) => {
               // setUser(user_temp);
+              console.log(response);
               setIsAuthUser(true);
+              setUserType(response.details.userType);
               setModalLogIn(false);
-              if(user_temp.userType === 'producer') navigate('/producer_account');
-              if(user_temp.userType === 'customer') navigate('/customer_account');
+              if(response.details.userType === 'producer') navigate('/producer_account');
+              if(response.details.userType === 'customer') navigate('/customer_account');
               // window.location.reload();
             },
             (error) => {
@@ -48,7 +49,7 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
         // navigate('/');
         // window.location.reload();
         try {
-          await authService.recowerPassword({...user_temp}).then(
+          await authService.recowerPassword({...data}).then(
             (response) => {
               setModalLogIn(false);
               navigate('/');
@@ -71,9 +72,9 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
       mode: 'onBlur',
   }); 
 
-    const userTypeRegister = register('userType', {
-      required: '* The field "User type" is required',
-    });
+    // const userTypeRegister = register('userType', {
+    //   required: '* The field "User type" is required',
+    // });
     const emailRegister = register('email', {
       required: '* The field "E-mail" is required',
       pattern: {
@@ -93,11 +94,11 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
 
         <p className={s.form_descr}>{info_text}</p>
 
-        <select className={s.form_input} {...userTypeRegister}>
+        {/* <select className={s.form_input} {...userTypeRegister}>
           <option value=''>User type</option>
           <option value='producer'>Packaging producer</option>
           <option value='customer'>Customer</option>
-        </select>
+        </select> */}
 
         <Input 
             type="text"

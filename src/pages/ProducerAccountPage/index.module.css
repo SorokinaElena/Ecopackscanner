@@ -1,0 +1,18 @@
+.producer_account_page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.account_content {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 45%;
+    height: 100%;
+}
+
+.producer_account_page a {
+    text-decoration: none;
+}

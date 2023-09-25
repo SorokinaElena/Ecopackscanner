@@ -45,7 +45,6 @@ const login = (email, password) => {
 
 const logout = () => {
   localStorage.removeItem('user');
-  console.log('exit');
 };
 
 const getCurrentUser = () => {

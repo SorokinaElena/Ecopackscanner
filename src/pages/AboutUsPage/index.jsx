@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import s from './index.module.css';
 import about_us_img from '../../media/about_us_img_eco-friendly-disposable-tableware-cups_small.png';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,13 @@ export default function AboutUsPage() {
   // const { pageName, setPageName } = useContext(Context);
   // setPageName('about_us_page')
   // console.log(pageName);
+
+  const { userType, setUserType } = useContext(Context);
+
+  useEffect(() => {
+    sessionStorage.setItem('userType', JSON.stringify(userType));
+  }, [userType]
+);
 
   return (
     <div className={s.about_us_page}>

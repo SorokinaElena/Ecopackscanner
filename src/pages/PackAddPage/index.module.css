@@ -4,11 +4,3 @@
     align-items: center;
     position: relative;
 }
-
-.form_container {
-    position: absolute;
-    right: 0;
-    top: 50px;
-    width: 45%;
-    height: 100%;
-}

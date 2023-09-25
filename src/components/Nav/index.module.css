@@ -40,7 +40,7 @@
     position: absolute;
     top: 0;
     right: calc(((100vw - 1440px) / 2) * -1);
-    z-index: 2;  
+    z-index: 20;  
 
     /* animation-name: nav_menu_open;
     animation-duration: 0.5s;
@@ -113,4 +113,19 @@
 
 .contacts_container a {
     color: rgb(91, 94, 93);
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .nav {
+        width: calc(100vw - 20px);
+        justify-content: space-between;
+        gap: 20px;
+        position: absolute;
+        top: 25px;
+    }
+    
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
 }
