@@ -63,7 +63,9 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
           console.log(err);
         }
       }     
-    }
+    };
+
+    
 
       // console.log(user);
       // console.log(isAuthUser);

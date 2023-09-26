@@ -59,7 +59,7 @@ const pack_create_req = ({user_id, category, estimatedSize, length, width, heigh
     })
     .then((response) => {
       if (response.data) {
-        localStorage.setItem('offer', JSON.stringify(response.data));
+        localStorage.setItem('added_pakaging', JSON.stringify(response.data));
       }
 
       return response.data;
@@ -155,6 +155,7 @@ const recowerPassword = (email) => {
 };
 
 const formService = {
+  pack_create_req,
   pack_search_req,
 };
 

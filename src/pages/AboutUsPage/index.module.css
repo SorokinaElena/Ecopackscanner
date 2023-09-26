@@ -2,8 +2,10 @@
     display: flex;
     gap: 50px;
     align-items: center;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
+    letter-spacing: 2px;
+    line-height: 30px;
 }
 
 .about_us_img {
@@ -20,4 +22,11 @@
 
 .about_us_page a {
     text-decoration: none;
+    font-weight: 600;
+}
+
+.about_us_page a:hover {
+    letter-spacing: 5px;
+    /* font-weight: 600; */
+    transition: all .4s ease; 
 }

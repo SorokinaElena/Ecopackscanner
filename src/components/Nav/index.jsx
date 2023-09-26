@@ -122,7 +122,8 @@ export default function Nav() {
           <Link to='/' onClick={set_menu_active}>{'Home'.toUpperCase()}</Link>
           <Link to='about_us' onClick={set_menu_active}>{'About us'.toUpperCase()}</Link>  
           <Link to='map' onClick={set_menu_active}>{'Packaging producers'.toUpperCase()}</Link> 
-          <Link onClick={set_menu_active}>{'Why ecopackaging'.toUpperCase()}</Link>
+          <Link to='why_ecopackaging' onClick={set_menu_active}>{'Why ecopackaging'.toUpperCase()}</Link>
+          <Link to='faq' onClick={set_menu_active}>{'FAQ'.toUpperCase()}</Link>
           {/* <Link to='/' onClick={set_menu_active}>{'Ecopackaging Search'.toUpperCase()}</Link>  */}
         </div>
 

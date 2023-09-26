@@ -1,6 +1,10 @@
-.pack_search_page {
+.packages_list_page {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
+}
+
+.packages_list_page a {
+    text-decoration: none;
 }

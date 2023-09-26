@@ -22,7 +22,7 @@ export default function FormSearchPack1() {
 
     const navigate = useNavigate();
 
-    const { authUser, setAuthUser, userType, setUserType } = useContext(Context);
+    const { authUser, setAuthUser, isAuthUser, setIsAuthUser, userType, setUserType } = useContext(Context);
 
     const [isActivePackName, setIsActivePackName] = useState(false);
     const [isActiveMerchandiseType, setIsActiveMerchandiseType] = useState(false);
@@ -73,25 +73,43 @@ export default function FormSearchPack1() {
       });
     
     const submit = async (data) => {
-      data.length = parseFloat(data.length); 
-      data.width = parseFloat(data.width); 
-      data.height = parseFloat(data.height); 
-      data.weight = parseFloat(data.weight); 
+      // data.length = parseFloat(data.length); 
+      // data.width = parseFloat(data.width); 
+      // data.height = parseFloat(data.height); 
+      // data.weight = parseFloat(data.weight); 
       console.log(data);
-        try {
-          await formService.pack_search_req({...data}).then(
-            (response) => {
-              console.log(response)
-              navigate('/search_results');
-              // window.location.reload(); // обнуляет состояние
-            },
-            (error) => {
-              console.log(error);
-            }
-          );
-        } catch (err) {
-          console.log(err);
+        if(isAuthUser === true && authUser.details.userType === 'producer') {
+          try {
+            await formService.pack_create_req({...data}).then(
+              (response) => {
+                console.log(response)
+                navigate('/producer_account');
+                // window.location.reload(); // обнуляет состояние
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+          } catch (err) {
+            console.log(err);
+          };
         }
+        if(isAuthUser === true && authUser.details.userType === 'customer') {
+          try {
+            await formService.pack_search_req({...data}).then(
+              (response) => {
+                console.log(response)
+                navigate('/search_results');
+                // window.location.reload(); // обнуляет состояние
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+          } catch (err) {
+            console.log(err);
+          };
+        }    
     };
 
     const features_registers = [];
@@ -190,10 +208,11 @@ export default function FormSearchPack1() {
         <form onSubmit={handleSubmit(submit)}>
 
             {
-              authUser.details._id !== ''
+              (authUser.details._id !== '' && authUser.details.userType === 'producer')
               ? <div className={s.btn_content_container}>
                   <div className={s.checkbox_container}>
                       <Input type='hidden' name='user' value={authUser.details._id} {...userRegister}  />
+                      {/* <Input type='hidden' name='user_type' value={authUser.details.userType} {...userTypeRegister}  /> */}
                   </div>
                 </div>
               : ''

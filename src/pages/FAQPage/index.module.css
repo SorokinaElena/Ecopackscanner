@@ -1,0 +1,19 @@
+.faq_page {
+    display: flex;
+    padding-top: 50px;
+    position: relative;
+}
+
+.faq_img {
+    box-shadow: 10px 10px 12px rgba(141, 140, 146, 0.9);
+    top: 50px;
+    left: 0;
+}
+
+.content_container {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 65%;
+    /* height: 100%; */
+}

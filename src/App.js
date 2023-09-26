@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import PackSearchPage from './pages/PackSearchPage';
-import PackAddPage from './pages/PackAddPage';
 import ProducerDataFormPage from './pages/ProducerDataFormPage';
 import AboutUsPage from './pages/AboutUsPage';
 import { Context } from './context';
@@ -15,8 +14,10 @@ import ProducerAccountPage from './pages/ProducerAccountPage';
 import CustomerAccountPage from './pages/CustomerAccountPage';
 import Map from './pages/Map';
 import FormProducerInfo from './components/FormProducerInfo';
-import PackagesList from './components/PackagesList';
+import PackagesListPage from './pages/PackagesListPage';
 import SearchResultsPage from './pages/SearchResultsPage';
+import FAQPage from './pages/FAQPage';
+import EcoArticlesPage from './pages/EcoArticlesPage';
 
 
 function App() {
@@ -62,14 +63,15 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path='pack_search' element={<PackSearchPage />} />
-            <Route path='pack_add' element={<PackAddPage />} />
             <Route path='producer_data_form' element={<ProducerDataFormPage />} />
             <Route path='about_us' element={<AboutUsPage />} />
             <Route path='producer_account' element={<ProducerAccountPage />} />
             <Route path='customer_account' element={<CustomerAccountPage />} />
-            <Route path='producer_account/producer_info' element={<FormProducerInfo />} />
-            <Route path='producer_account/packages_list' element={<PackagesList />} />
+            {/* <Route path='producer_account/producer_info' element={<FormProducerInfo />} /> */}
+            <Route path='producer_account/packages_list' element={<PackagesListPage />} />
             <Route path='search_results' element={<SearchResultsPage />} />
+            <Route path='why_ecopackaging' element={<EcoArticlesPage />} />
+            <Route path='faq' element={<FAQPage />} />
             <Route path='map' element={<Map />} />
           </Route>
         </Routes>

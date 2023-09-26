@@ -7,7 +7,7 @@ import Button from '../../components/Button';
 import pack_add_img from '../../media/pack_add_img_cartoon-concept-recycle_small.png';
 
 
-export default function CustomerAccountPage() {
+export default function ProducerAccountPage() {
 
   const { user, setUser, isAuthUser, setIsAuthUser, authUser, setAuthUser } = useContext(Context); 
 
@@ -21,7 +21,7 @@ export default function CustomerAccountPage() {
     <div className={s.producer_account_page}>
       <img className={s.pack_search_img} src={pack_add_img} alt="close-up-sustainable-coffee-cup-alternatives" />
       <div className='content_container'>
-        <p>CustomerAccountPage</p>
+        <p>ProducerAccountPage</p>
         <p>user name: {authUser.details.companyName}</p>  
         <p>user type: {authUser.details.userType}</p> 
         <p>user id: {authUser.details._id}</p> 
@@ -29,8 +29,9 @@ export default function CustomerAccountPage() {
         <Link to='/pack_search'>
           <Button color='grey'>add ecopackaging</Button>
         </Link>
-
-        <p>my offers</p> 
+        <Link to='packages_list'>
+          <Button color='grey'>my packaging list</Button>
+        </Link>
       </div>
     </div>
   )

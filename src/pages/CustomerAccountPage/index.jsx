@@ -29,8 +29,8 @@ export default function CustomerAccountPage() {
         <Link to='/pack_search'>
           <Button color='grey'>search for ecopackaging</Button>
         </Link>
-
-        <p>my offers</p> 
+        <p>you value of points: three points</p>
+        <p>subscription button - subsc page - buy points</p> 
       </div>
     </div>
   )
