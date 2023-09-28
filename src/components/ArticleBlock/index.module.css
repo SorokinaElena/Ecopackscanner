@@ -1,0 +1,34 @@
+.article_block {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    line-height: 30px;
+    padding: 0px 100px 50px 100px;
+}
+
+.article_block img {
+    width: 400px;
+    height: 400px;
+    box-shadow: 10px 10px 12px rgba(141, 140, 146, 0.9);
+}
+
+.article_block img:hover {
+    transform: scale(1.05);
+    transition: all .4s ease; 
+}
+
+.article_block h2:hover {
+    letter-spacing: 5px;
+    transition: all .4s ease; 
+}
+
+.link_text {
+    padding-top: 20px;
+}
+
+.article_block a {
+    text-decoration: none;
+}

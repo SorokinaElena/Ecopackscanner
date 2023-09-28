@@ -21,16 +21,17 @@ export default function CustomerAccountPage() {
     <div className={s.custommer_account_page}>
       <img className={s.pack_search_img} src={pack_search_img} alt="close-up-sustainable-coffee-cup-alternatives" />
       <div className='content_container'>
-        <p>CustomerAccountPage</p>
+        <h2 className='page_title'>Personal account: customer </h2>
         <p>user name: {authUser.details.companyName}</p>  
         <p>user type: {authUser.details.userType}</p> 
         <p>user id: {authUser.details._id}</p> 
-
+        <p>points value: three points</p>
         <Link to='/pack_search'>
           <Button color='grey'>search for ecopackaging</Button>
         </Link>
-        <p>you value of points: three points</p>
-        <p>subscription button - subsc page - buy points</p> 
+        <Link to='/subscription'>
+          <Button color='grey'>buy points</Button>
+        </Link>
       </div>
     </div>
   )

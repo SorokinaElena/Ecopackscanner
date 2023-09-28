@@ -37,6 +37,8 @@ body {
     background-image: url('./media/paper_background_2.png');
     opacity: 1;
     background-size: cover;
+    /* background-color: #c8beb0; */
+    /* background-color: rgba(200, 190,176, 0.90); */
 }
 
 .content_container {
@@ -48,10 +50,21 @@ body {
 }
 
 .content_container p {
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     font-size: 20px;
     font-weight: 500;
     letter-spacing: 2px;
+    line-height: 28px;
+}
+
+.page_title {
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    line-height: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: #00aa50bf;
 }
 
 .button_container {

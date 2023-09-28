@@ -21,16 +21,19 @@ export default function ProducerAccountPage() {
     <div className={s.producer_account_page}>
       <img className={s.pack_search_img} src={pack_add_img} alt="close-up-sustainable-coffee-cup-alternatives" />
       <div className='content_container'>
-        <p>ProducerAccountPage</p>
+        <h2 className='page_title'>Personal account: producer</h2>
         <p>user name: {authUser.details.companyName}</p>  
         <p>user type: {authUser.details.userType}</p> 
         <p>user id: {authUser.details._id}</p> 
-
+        <p>points value: three points</p>
         <Link to='/pack_search'>
           <Button color='grey'>add ecopackaging</Button>
         </Link>
         <Link to='packages_list'>
           <Button color='grey'>my packaging list</Button>
+        </Link>
+        <Link to='/subscription'>
+          <Button color='grey'>buy points</Button>
         </Link>
       </div>
     </div>

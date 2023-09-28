@@ -18,6 +18,8 @@ import PackagesListPage from './pages/PackagesListPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import FAQPage from './pages/FAQPage';
 import EcoArticlesPage from './pages/EcoArticlesPage';
+import SubscriptionPage from './pages/SubscriptionPage';
+import ArticlePage from './components/Article';
 
 
 function App() {
@@ -53,12 +55,17 @@ function App() {
   return initialValue || '';
   });
 
+  const [packaging, setPackaging] = useState(() => {
+    const saved = localStorage.getItem('search_res');
+    const initialValue = JSON.parse(saved);
+    return initialValue || '';
+    });
   // const [pageName, setPageName] = useState('')
 
 
   return (
     <div className="App">
-      <Context.Provider value={{modal, setModal, modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, isAuthUser, setIsAuthUser, authUser, setAuthUser, userType, setUserType}}>
+      <Context.Provider value={{modal, setModal, modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, isAuthUser, setIsAuthUser, authUser, setAuthUser, userType, setUserType, packaging, setPackaging}}>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
@@ -70,7 +77,10 @@ function App() {
             {/* <Route path='producer_account/producer_info' element={<FormProducerInfo />} /> */}
             <Route path='producer_account/packages_list' element={<PackagesListPage />} />
             <Route path='search_results' element={<SearchResultsPage />} />
+            <Route path='subscription' element={<SubscriptionPage />} />
             <Route path='why_ecopackaging' element={<EcoArticlesPage />} />
+            <Route path='why_ecopackaging/:id' element={<ArticlePage />} />
+            {/* <Route path='article' element={<ArticlePage />} /> */}
             <Route path='faq' element={<FAQPage />} />
             <Route path='map' element={<Map />} />
           </Route>

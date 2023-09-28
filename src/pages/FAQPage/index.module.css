@@ -1,6 +1,6 @@
 .faq_page {
     display: flex;
-    padding-top: 50px;
+    padding: 50px 0 50px 0;
     position: relative;
 }
 

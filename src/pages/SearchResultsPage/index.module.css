@@ -1,10 +1,20 @@
 .search_results_page {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     position: relative;
 }
 
 .search_results_page a {
     text-decoration: none;
+}
+
+.content_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.description p{
+    margin-bottom: 0;
 }

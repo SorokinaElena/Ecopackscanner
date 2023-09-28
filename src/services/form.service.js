@@ -116,11 +116,15 @@ const pack_search_req = ({user_id, category, estimatedSize, length, width, heigh
     })
     .then((response) => {
       if (response.data) {
-        localStorage.setItem('offer', JSON.stringify(response.data));
+        localStorage.setItem('search_res', JSON.stringify(response.data.data));
       }
 
       return response.data;
     });
+};
+
+const get_current_search_res = () => {
+  return JSON.parse(localStorage.getItem('search_res'));
 };
 
 const login = (email, password) => {
@@ -157,6 +161,7 @@ const recowerPassword = (email) => {
 const formService = {
   pack_create_req,
   pack_search_req,
+  get_current_search_res
 };
 
 export default formService;
