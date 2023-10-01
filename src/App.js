@@ -55,6 +55,8 @@ function App() {
   return initialValue || '';
   });
 
+  const [reqData, setReqData] = useState([]);
+
   const [packaging, setPackaging] = useState(() => {
     const saved = localStorage.getItem('search_res');
     const initialValue = JSON.parse(saved);
@@ -65,7 +67,7 @@ function App() {
 
   return (
     <div className="App">
-      <Context.Provider value={{modal, setModal, modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, isAuthUser, setIsAuthUser, authUser, setAuthUser, userType, setUserType, packaging, setPackaging}}>
+      <Context.Provider value={{modal, setModal, modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, isAuthUser, setIsAuthUser, authUser, setAuthUser, userType, setUserType, packaging, setPackaging, reqData, setReqData}}>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />

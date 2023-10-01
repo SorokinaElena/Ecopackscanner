@@ -44,7 +44,7 @@ body {
 .content_container {
     position: absolute;
     right: 0;
-    top: 50px;
+    top: 30px;
     width: 45%;
     height: 100%;
 }

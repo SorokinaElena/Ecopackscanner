@@ -5,16 +5,16 @@ import Input from '../Input';
 import Button from '../Button';
 import CheckboxI from '../CheckboxI';
 import { merchandise_types } from './data/merchandise_types';
-import { dimensions } from './data/dimensions';
+// import { dimensions } from './data/dimensions';
 import { product_types } from './data/product_types';
 import { packaging_types } from './data/packaging_types';
 import { sustainability_levels } from './data/sustainability_levels';
 import formService from '../../services/form.service';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../../context';
-import { BiSolidDownArrow } from 'react-icons/bi';
+// import { BiSolidDownArrow } from 'react-icons/bi';
 import { BiDownArrow } from 'react-icons/bi';
-import { BiSolidUpArrow } from 'react-icons/bi';
+// import { BiSolidUpArrow } from 'react-icons/bi';
 import { BiUpArrow } from 'react-icons/bi';
 
 
@@ -22,7 +22,7 @@ export default function FormSearchPack1() {
 
     const navigate = useNavigate();
 
-    const { authUser, setAuthUser, isAuthUser, setIsAuthUser, userType, setUserType, packaging, setPackaging } = useContext(Context);
+    const { authUser, setAuthUser, isAuthUser, setIsAuthUser, userType, setUserType, packaging, setPackaging, reqData, setReqData } = useContext(Context);
 
     const [isActivePackName, setIsActivePackName] = useState(false);
     const [isActiveMerchandiseType, setIsActiveMerchandiseType] = useState(false);
@@ -78,6 +78,7 @@ export default function FormSearchPack1() {
       // data.height = parseFloat(data.height); 
       // data.weight = parseFloat(data.weight); 
       console.log(data);
+      setReqData(data);
         if(isAuthUser === true && authUser.details.userType === 'producer') {
           try {
             await formService.pack_create_req({...data}).then(
@@ -117,7 +118,7 @@ export default function FormSearchPack1() {
             await formService.pack_search_req({...data}).then(
               (response) => {
                 console.log(response);
-                setPackaging(response.data);
+                // setPackaging(response.data);
                 navigate('/search_results');
                 // window.location.reload(); // обнуляет состояние
               },
