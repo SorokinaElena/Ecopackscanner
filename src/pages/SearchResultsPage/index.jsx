@@ -39,21 +39,23 @@ export default function SearchResultsPage() {
   // console.log(obj);
 
  
-  let additional_search_params = [];
+  // let additional_search_params = [];
 
   const get_true_pack_params = (packaging) => {
     const result = [];
-    if(packaging[0]) {
+    if(packaging.length >  0) {
       const packaging_value = packaging.length;
       for(let i = 0; i < packaging_value; i++) {
+        let additional_search_params = [];
         const obj = packaging[i]
         const keys = Object.keys(obj);
         for(let j = 0; j < keys.length; j++) {
           const key = keys[j];
-          if(obj[key] === true && !result.includes(key)) {
-            result.push(key)
+          if(obj[key] === true && !additional_search_params.includes(key)) {
+            additional_search_params.push(key)
         }
       }
+      result.push(additional_search_params);
     }
   }    
     return result;
@@ -74,12 +76,10 @@ export default function SearchResultsPage() {
 //   return result;
 // };
 
-  additional_search_params = get_true_pack_params(packaging);   
+  const additional_search_params = get_true_pack_params(packaging);   
   console.log(additional_search_params);
 
   
-  
-    
   return (
     <div className={s.search_results_page}>
       <img className={s.pack_search_img} src={pack_search_img} alt="close-up-sustainable-coffee-cup-alternatives" />
