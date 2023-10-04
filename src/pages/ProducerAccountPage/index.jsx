@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Context } from '../../context';
 import authService from '../../services/auth.service';
 import Button from '../../components/Button';
-import pack_add_img from '../../media/pack_add_img_cartoon-concept-recycle_small.png';
 import formService from '../../services/form.service';
 
 
@@ -25,8 +24,7 @@ export default function ProducerAccountPage() {
   }
 
   return (
-    <div className={s.producer_account_page}>
-      <img className={s.pack_search_img} src={pack_add_img} alt="close-up-sustainable-coffee-cup-alternatives" />
+    <div className={s.background}>
       <div className='content_container'>
         <h2 className='page_title'>Personal account: producer</h2>
         <p>user name: {authUser.details.companyName}</p>  

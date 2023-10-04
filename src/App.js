@@ -62,12 +62,17 @@ function App() {
     const initialValue = JSON.parse(saved);
     return initialValue || '';
     });
-  // const [pageName, setPageName] = useState('')
+
+  const [packagingList, setPackagingList] = useState(() => {
+    const saved = localStorage.getItem('packaging_list_res');
+    const initialValue = JSON.parse(saved);
+    return initialValue || '';
+    });
 
 
   return (
     <div className="App">
-      <Context.Provider value={{modal, setModal, modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, isAuthUser, setIsAuthUser, authUser, setAuthUser, userType, setUserType, packaging, setPackaging, reqData, setReqData}}>
+      <Context.Provider value={{modal, setModal, modalSignUp, setModalSignUp, modalLogIn, setModalLogIn, isAuthUser, setIsAuthUser, authUser, setAuthUser, userType, setUserType, packaging, setPackaging, reqData, setReqData, packagingList, setPackagingList}}>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />

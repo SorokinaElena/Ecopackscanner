@@ -1,18 +1,9 @@
-.producer_account_page {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
+.background {
+    background-image: url('../../media/pack_add_img_cartoon-concept-recycle_small.png');
+    background-repeat: no-repeat;
+    min-height: 652px;
 }
 
-.account_content {
-    position: absolute;
-    right: 0;
-    top: 50px;
-    width: 45%;
-    height: 100%;
-}
-
-.producer_account_page a {
+.background a {
     text-decoration: none;
 }

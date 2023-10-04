@@ -1,5 +1,6 @@
-.pack_search_page {
-    position: relative;
+.background {
+    background-image: url('../../media/pack_search_img_close-up-sustainable-coffee-cup-alternatives_3_small.png');
+    background-repeat: no-repeat;
 }
 
 .p_container {

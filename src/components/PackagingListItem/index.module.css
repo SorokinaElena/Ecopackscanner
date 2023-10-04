@@ -1,0 +1,6 @@
+.packaging_list_item {
+    width: 90%;
+    padding: 40px;
+    background-color: rgba(0, 170, 80, 0.2);
+    border-radius: 10px;
+}

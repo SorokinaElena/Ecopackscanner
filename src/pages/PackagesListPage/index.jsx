@@ -1,25 +1,34 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import s from './index.module.css';
 import { Link } from 'react-router-dom';
-import Packaging from '../../components/Packaging';
-import pack_add_img from '../../media/pack_add_img_cartoon-concept-recycle_small.png';
+import PackagingListItem from '../../components/PackagingListItem';
 import Button from '../../components/Button';
 import formService from '../../services/form.service';
+import { Context } from '../../context';
 
 
 export default function PackagesListPage() {
 
+  const { packagingList, setPackagingList } = useContext(Context);
+
+  useEffect(() => {
+    const current_search_res = formService.get_current_packaging_list();
+    if(current_search_res) setPackagingList(current_search_res);
+  }, []);
+
+  console.log(packagingList);
+
 // const pakaging_list = formService.get_packaging_list()
 
   return (
-    <div className={s.packages_list_page}>
-      <img className={s.pack_search_img} src={pack_add_img} alt="close-up-sustainable-coffee-cup-alternatives" />
-      <div className='content_container'>
+    <div className={s.background}>
+      <div className={['content_container', s.content_container].join(' ')}>
         <p className='page_title'>{'Packages list'.toUpperCase()}</p>
-        {/* <Packaging />
-        <Packaging />
-        <Packaging />
-        <Packaging /> */}
+        {
+          packagingList.length > 0
+          ? packagingList.map(el => <PackagingListItem key={el._id} {...el} index={packagingList.indexOf(el)} />)
+          : 'No items added'
+        }
         <Link to='/pack_search'>
           <Button color='grey'>add new packaging</Button>
         </Link>

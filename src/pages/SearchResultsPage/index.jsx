@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import s from './index.module.css';
 import { Link } from 'react-router-dom';
 import Packaging from '../../components/Packaging';
-import pack_search_img from '../../media/pack_search_img_close-up-sustainable-coffee-cup-alternatives_3_small.png';
 import Button from '../../components/Button';
 import { Context } from '../../context';
 import formService from '../../services/form.service';
@@ -104,8 +103,7 @@ const get_true_pack_params_from_req = (reqData) => {
 
   
   return (
-    <div className={s.search_results_page}>
-      <img className={s.pack_search_img} src={pack_search_img} alt="close-up-sustainable-coffee-cup-alternatives" />
+    <div className={s.background}>
       <div className={['content_container', s.content_container].join(' ')}>
         <h2 className='page_title'>{'Search results for an ecopackaging'.toUpperCase()}</h2>
         <div className={s.description}>

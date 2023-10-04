@@ -22,11 +22,6 @@
     font-family: 'Maven Pro';
     font-style: normal;
     color: #2D2D2D;
-    /* color: #c26f2d;
-    color: #ff8100;
-    color: #612f96;
-    color: #876db2;
-    color: #ffa671; */
 }
 
 html {
@@ -42,15 +37,13 @@ body {
 }
 
 .content_container {
-    position: absolute;
-    right: 0;
-    top: 30px;
     width: 45%;
-    height: 100%;
+    height: fit-content;
+    margin-left: 800px;
+    padding-top: 20px;
 }
 
 .content_container p {
-    /* margin-bottom: 20px; */
     font-size: 20px;
     font-weight: 500;
     letter-spacing: 2px;

@@ -35,7 +35,7 @@ export default function Footer() {
           <div className={s.menu_items_container}>
             <div className={s.contact_item}>
               <AiOutlineMail className={s.icon}/>
-              <span className={s.social_link}>phaeos.info@gmail.com</span>
+              <a href='mailto:phaeos.info@gmail.com' className={s.social_link}>phaeos.info@gmail.com</a>
             </div>
             <div className={s.contact_item}>
               <AiOutlinePhone className={s.icon}/>

@@ -1,10 +1,10 @@
-.search_results_page {
-    display: flex;
-    align-items: center;
-    position: relative;
+.background {
+    background-image: url('../../media/pack_search_img_close-up-sustainable-coffee-cup-alternatives_3_small.png');
+    background-repeat: no-repeat;
+    min-height: 652px;
 }
 
-.search_results_page a {
+.background a {
     text-decoration: none;
 }
 
