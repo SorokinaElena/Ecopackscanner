@@ -82,7 +82,6 @@ function App() {
             <Route path='subscription' element={<SubscriptionPage />} />
             <Route path='why_ecopackaging' element={<EcoArticlesPage />} />
             <Route path='why_ecopackaging/:id' element={<ArticlePage />} />
-            {/* <Route path='article' element={<ArticlePage />} /> */}
             <Route path='faq' element={<FAQPage />} />
             <Route path='map' element={<Map />} />
           </Route>

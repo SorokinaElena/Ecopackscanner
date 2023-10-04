@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-axios.defaults.baseURL = 'http://localhost:5001';
-// axios.defaults.baseURL = 'http://soroka.chickenkiller.com:5001';
+// axios.defaults.baseURL = 'http://localhost:5001';
+axios.defaults.baseURL = 'http://soroka.chickenkiller.com:5001';
 
 // Include credentials (cookies) with every Axios request
 // axios.defaults.withCredentials = true;
@@ -127,41 +127,30 @@ const get_current_search_res = () => {
   return JSON.parse(localStorage.getItem('search_res'));
 };
 
-const login = (email, password) => {
+const pack_list_req = (data) => {
   return axios
-    .post(API_URL + '/login', {
-      email,
-      password,
+    .post(API_URL + '/getPackagebyUser/' + data, {
+      // user_id: data,
     })
     .then((response) => {
       if (response.data) {
-        localStorage.setItem('user', JSON.stringify(response.data));
+        localStorage.setItem('packaging_list_res', JSON.stringify(response.data));
       }
-
+      console.log(response.data)
       return response.data;
     });
 };
 
-const logout = () => {
-  localStorage.removeItem('user');
-  console.log('exit');
-};
-
-const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem('user'));
-};
-
-const recowerPassword = (email) => {
-  return axios
-    .post(API_URL + '/sendcode', {
-      email,
-    })
+const get_current_packaging_list = () => {
+  return JSON.parse(localStorage.getItem('packaging_list_res'));
 };
 
 const formService = {
   pack_create_req,
   pack_search_req,
-  get_current_search_res
+  get_current_search_res,
+  pack_list_req,
+  get_current_packaging_list,
 };
 
 export default formService;

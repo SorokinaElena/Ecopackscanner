@@ -10,7 +10,7 @@ import formService from '../../services/form.service';
 
 export default function SearchResultsPage() {
 
-  const { packaging, setPackaging, reqData, setReqData } = useContext(Context);
+  const { packaging, setPackaging, reqData, setReqData, isAuthUser, setIsAuthUser } = useContext(Context);
   
   // console.log(formService.get_current_search_res());
   useEffect(() => {
@@ -59,7 +59,27 @@ export default function SearchResultsPage() {
     }
   }    
     return result;
-}
+};
+
+const get_true_pack_params_from_req = (reqData) => {
+  const result = [];
+  if(reqData) {
+    
+   
+           
+     
+      const keys = Object.keys(reqData);
+      for(let j = 0; j < keys.length; j++) {
+        const key = keys[j];
+        if(reqData[key] === true) {
+          result.push(key)
+      }
+    }
+    
+  
+}    
+  return result;
+};
 
 //     const keys = Object.keys(obj);
 //     console.log(keys);
@@ -79,6 +99,9 @@ export default function SearchResultsPage() {
   const additional_search_params = get_true_pack_params(packaging);   
   console.log(additional_search_params);
 
+  const additional_search_params_from_req = get_true_pack_params_from_req(reqData);   
+  console.log(additional_search_params_from_req);
+
   
   return (
     <div className={s.search_results_page}>
@@ -89,17 +112,20 @@ export default function SearchResultsPage() {
             <p>According to your request</p>
             <p>for a products from category <span className='page_title'>{reqData.category}</span></p>
             <p>with the maximum size of the largest side up to - <span className='page_title'>{reqData.estimatedSize}</span></p>
-
-            {/* <p>additional parameters for product type and packaging type at the search:</p>
-            {
-              additional_search_params.map(el => <p key={el} style={{paddingLeft: '20px'}}>{`#${el}`}</p>)
-            } */}
-
         </div>
-
         {
           packaging.length > 0
-          ? packaging.map(el => <Packaging key={el.id} {...el} index={packaging.indexOf(el)} additional_search_params={additional_search_params}/>)
+          ? isAuthUser === true
+            ? packaging.map(el => <Packaging key={el.id} {...el} index={packaging.indexOf(el)} additional_search_params={additional_search_params}/>)
+            : <>
+                <p><span className='page_title'>{packaging.length}</span> offers(s) found</p>
+                <p>search tags:</p>
+                  {
+                    additional_search_params.length > 0
+                    ? additional_search_params_from_req.map(el => <p key={el} style={{paddingLeft: '20px'}}>{`#${el}`}</p>)
+                    : <p style={{paddingLeft: '20px'}}># unspecified</p> 
+                  }
+              </>  
           : <p> No products matching your search criteria were found, please try refining your criteria and searching again</p>
         }
         

@@ -59,9 +59,12 @@
 
 .nav_menu.is_active {
     display: flex;
+    overflow-y: hidden;
 }
+  
 
-.nav_menu a {
+.menu_link,
+.contact_item {
     text-decoration: none;
     font-size: 22px;
     font-weight: 400;
@@ -69,7 +72,11 @@
     letter-spacing: 2px;
 }
 
-.nav_menu a:hover {
+.contacts_container a {
+    text-decoration: none;
+}
+
+.menu_link:hover {
     letter-spacing: 5px;
     font-weight: 500;
     transition: all .4s ease; 
@@ -107,12 +114,27 @@
 }
 
 .contacts_container {
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
     font-size: 14px;
 }
 
-.contacts_container a {
+/* .contacts_container a {
     color: rgb(91, 94, 93);
+} */
+
+.contact_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social_links_container {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
 }
 
 @media (min-width: 320px) and (max-width: 767px) {

@@ -10,6 +10,13 @@ import { PiUserPlus } from 'react-icons/pi';
 import { PiUserMinus } from 'react-icons/pi';
 import { PiUserGear } from 'react-icons/pi';
 import { VscChromeClose } from 'react-icons/vsc';
+import { AiOutlineMail } from 'react-icons/ai';
+import { AiOutlinePhone } from 'react-icons/ai';
+import { BsFacebook } from 'react-icons/bs';
+import { BsWhatsapp } from 'react-icons/bs';
+import { BsTelegram } from 'react-icons/bs';
+import { BsLinkedin } from 'react-icons/bs';
+import { BsInstagram } from 'react-icons/bs';
 import authService from '../../services/auth.service';
 
 
@@ -23,8 +30,22 @@ export default function Nav() {
 
   const set_menu_active = () => {
     setMenuActive(menuActive ? false : true);
+    console.log(menuActive)
+    // if(menuActive === true) {
+    //   document.body.classList.add('lock-scroll');
+    // } else {
+    //   document.body.classList.remove('lock-scroll');
+    // }
+  };
 
+  console.log('test')
+  console.log(menuActive)
+  if(menuActive === true) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
   }
+  
 
   let btn_status_unauthuser = {};
   let btn_status_authuser = {};
@@ -119,19 +140,59 @@ export default function Nav() {
         </div>
 
         <div className={s.menu_items_container}>
-          <Link to='/' onClick={set_menu_active}>{'Home'.toUpperCase()}</Link>
-          <Link to='about_us' onClick={set_menu_active}>{'About us'.toUpperCase()}</Link>  
-          <Link to='map' onClick={set_menu_active}>{'Packaging producers'.toUpperCase()}</Link> 
-          <Link to='why_ecopackaging' onClick={set_menu_active}>{'Why ecopackaging'.toUpperCase()}</Link>
-          <Link to='faq' onClick={set_menu_active}>{'FAQ'.toUpperCase()}</Link>
+          <Link to='/' onClick={set_menu_active} className={s.menu_link}>{'Home'.toUpperCase()}</Link>
+          <Link to='about_us' onClick={set_menu_active} className={s.menu_link}>{'About us'.toUpperCase()}</Link>  
+          <Link to='map' onClick={set_menu_active} className={s.menu_link}>{'Packaging producers'.toUpperCase()}</Link> 
+          <Link to='why_ecopackaging' onClick={set_menu_active} className={s.menu_link}>{'Why ecopackaging'.toUpperCase()}</Link>
+          <Link to='faq' onClick={set_menu_active} className={s.menu_link}>{'FAQ'.toUpperCase()}</Link>
           {/* <Link to='/' onClick={set_menu_active}>{'Ecopackaging Search'.toUpperCase()}</Link>  */}
         </div>
 
         <div className={s.contacts_container}>
-          <Link onClick={set_menu_active}>email address</Link> 
-          <Link onClick={set_menu_active}>phone number</Link>
-          <Link onClick={set_menu_active}>cocial media</Link>
+          <Link onClick={set_menu_active}>
+            <div className={s.contact_item}>
+              <AiOutlineMail className={s.icon}/>
+              <span className={s.social_link}>phaeos.info@gmail.com</span>
+            </div>
+          </Link> 
+          <Link onClick={set_menu_active} className={s.social_link}>
+            <div className={s.contact_item}>
+              <AiOutlinePhone className={s.icon}/>
+              <span>+49 179 9999999</span>
+            </div>
+          </Link>
+          
+          <div className={s.social_links_container}>
+            <a onClick={set_menu_active} target='_blank' href='https://www.facebook.com/'>
+              <div className={s.contact_item} >
+                <BsFacebook className={s.icon}/>
+              </div>
+            </a>
+            <a onClick={set_menu_active} target='_blank' href='https://www.instagram.com/'>
+              <div className={s.contact_item}>
+                <BsInstagram className={s.icon}/>
+              </div>
+            </a>
+            <a onClick={set_menu_active} target='_blank' href='https://web.whatsapp.com/'>
+              <div className={s.contact_item}>
+                <BsWhatsapp className={s.icon}/>
+              </div>
+            </a>
+            <a onClick={set_menu_active} target='_blank' href='https://web.telegram.org/'>
+              <div className={s.contact_item}>
+                <BsTelegram className={s.icon}/>
+              </div>
+            </a>
+            <a onClick={set_menu_active} target='_blank' href='https://www.linkedin.com/'>
+              <div className={s.contact_item}>
+                <BsLinkedin className={s.icon}/>
+              </div>
+            </a>
         </div>
+          
+        </div>
+
+        
         
       </div>
     </nav>

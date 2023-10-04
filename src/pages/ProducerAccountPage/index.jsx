@@ -1,13 +1,16 @@
 import React, { useContext, useEffect } from 'react';
 import s from './index.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Context } from '../../context';
 import authService from '../../services/auth.service';
 import Button from '../../components/Button';
 import pack_add_img from '../../media/pack_add_img_cartoon-concept-recycle_small.png';
+import formService from '../../services/form.service';
 
 
 export default function ProducerAccountPage() {
+
+  const navigate = useNavigate();
 
   const { user, setUser, isAuthUser, setIsAuthUser, authUser, setAuthUser } = useContext(Context); 
 
@@ -15,7 +18,11 @@ export default function ProducerAccountPage() {
     const current_user = authService.getCurrentUser();
     if(current_user) setAuthUser(current_user);
   }, []);
-  
+
+  const submit = (data) => {
+    console.log(data);
+    formService.pack_list_req(data);
+  }
 
   return (
     <div className={s.producer_account_page}>
@@ -30,7 +37,7 @@ export default function ProducerAccountPage() {
           <Button color='grey'>add ecopackaging</Button>
         </Link>
         <Link to='packages_list'>
-          <Button color='grey'>my packaging list</Button>
+          <Button color='grey' onClick={() => {submit(authUser.details._id)}}>my packaging list</Button>
         </Link>
         <Link to='/subscription'>
           <Button color='grey'>buy points</Button>

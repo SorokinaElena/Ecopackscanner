@@ -74,6 +74,10 @@ body {
     width: 90%;
 }
 
+body.lock-scroll {
+    overflow-y: hidden;
+  }
+
 /* @media (min-width: 320px) and (max-width: 767px) {
     body {
       

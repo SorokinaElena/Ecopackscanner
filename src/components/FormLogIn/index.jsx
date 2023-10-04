@@ -24,7 +24,7 @@ export default function FormLogIn({title, descr, button, form_type, info_text, l
           await authService.login({...data}).then(
             (response) => {
               // setUser(user_temp);
-              console.log(response);
+              // console.log(response);
               setIsAuthUser(true);
               setUserType(response.details.userType);
               setModalLogIn(false);

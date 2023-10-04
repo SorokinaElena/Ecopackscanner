@@ -13,7 +13,7 @@ const { pageName, setPageName } = useContext(Context);
 
   return (
     <header className={s.header}>
-      {
+      {/* {
         pageName === 'home_page'
         ? <div className={s.logo_container}>
         <Link to='/' className={s.logo_main}>
@@ -25,7 +25,10 @@ const { pageName, setPageName } = useContext(Context);
         <img src={logo_1} alt="Logo" />
       </Link>
     </div>
-      }
+      } */}
+      <Link to='/' className={s.logo}>
+        <img src={logo_1} alt="Logo" />
+      </Link>
       <Nav />
     </header>
   )

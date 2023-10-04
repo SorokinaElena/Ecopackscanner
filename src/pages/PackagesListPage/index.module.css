@@ -1,0 +1,9 @@
+.packages_list_page {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.packages_list_page a {
+    text-decoration: none;
+}
