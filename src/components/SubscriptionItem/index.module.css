@@ -1,0 +1,32 @@
+.subscription_item {
+    padding: 15px 25px 15px 25px;
+    background-color: rgba(0, 170, 80, 0.2);
+    border-radius: 10px;
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    box-shadow: 10px 10px 12px rgba(141, 140, 146, 0.9);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.subscription_item h2 {
+    text-align: center;
+    margin: 15px 0 15px 0;
+}
+
+.subscription_item h3 {
+    margin-bottom: 10px;
+}
+
+.subscription_item p {
+    margin: 0 0 10px 15px;
+}
+
+.subscription_item div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+}

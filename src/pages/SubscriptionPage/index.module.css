@@ -1,0 +1,10 @@
+.background {
+    background-image: url('../../media/subscription_img.png');
+    margin: 20px 0 20px 0;
+    background-repeat: no-repeat;
+    min-height: 652px;
+   
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
