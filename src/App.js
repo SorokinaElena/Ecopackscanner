@@ -45,6 +45,7 @@ function App() {
       country: '',
       adress: '',
       email: '',
+      tockens_value: 0,
     },
     isAdmin: false,
   });
@@ -68,6 +69,7 @@ function App() {
     const initialValue = JSON.parse(saved);
     return initialValue || '';
     });
+
 
 
   return (

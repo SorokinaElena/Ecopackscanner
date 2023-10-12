@@ -3,7 +3,15 @@ import s from './index.module.css';
 import Button from '../Button';
 
 
-export default function SubscriptionItem({ title, essential_features, advanced_features, advanced_features_plus, price }) {
+export default function SubscriptionItem({ title, essential_features, advanced_features, advanced_features_plus, price, id }) {
+
+const subscribe = (id) => {
+    const target_subscribe = {
+        id: id,
+    }
+    console.log(target_subscribe)
+};
+
   return (
     <div className={s.subscription_item}>
         <div>
@@ -32,9 +40,13 @@ export default function SubscriptionItem({ title, essential_features, advanced_f
             }
         </div>
         <div>
-            <Button color='green'>
-                {price}
-            </Button>
+            <form action='/create-checkout-session' method='POST'>
+                {/* Add a hidden field with the lookup_key of your Price */}
+                <input type='hidden' name='lookup_key' value={id} />
+                <Button color='green' /*onClick={() => {subscribe(id)}}*/ id='checkout-and-portal-button' type='submit'>
+                    {price}
+                </Button>
+            </form>
         </div>
     </div>
   )

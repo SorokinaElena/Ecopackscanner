@@ -1,18 +1,35 @@
 import React, { useContext } from 'react';
 import s from './index.module.css';
 import { Context } from '../../context';
+import { IoIosCloseCircle } from 'react-icons/io';
+import formService from '../../services/form.service';
+
 
 export default function PackagingListItem({ index }) {
 
     const { packagingList, setPackagingList } = useContext(Context);
 
+    const delete_packaging_item = (index) => {
+        // console.log(packagingList[index].user);
+        // console.log(packagingList[index]._id);
+        const target_packaging_item = {
+            userId: packagingList[index].user,
+            packageId: packagingList[index]._id,
+        };
+        console.log(target_packaging_item);
+        formService.delete_package(target_packaging_item);
+        
+    }
+
+
   return (
     <div className={s.packaging_list_item}>
-        <p>Product Category: {packagingList[index].category}</p>
-        <p>Packaging Name: {packagingList[index].name}</p>
-        <p>Packaging Size: {packagingList[index].estimatedSize}</p>
+        <div><IoIosCloseCircle className={s.icon} onClick={() => {delete_packaging_item(index)}}/></div>
+        <p>Product Category: <span className={s.content}>{packagingList[index].category}</span> </p>
+        <p>Packaging Name: <span className={s.content}>{packagingList[index].name}</span> </p>
+        <p>Packaging Size: <span className={s.content}>{packagingList[index].estimatedSize}</span> </p>
         <p>Product Type:</p>
-          <div>
+          <div className={s.features}>
             <p>{packagingList[index].fragile === true ? 'fragile' : ''}</p>
             <p>{packagingList[index].granules === true ? 'granules' : ''}</p>
             <p>{packagingList[index].liquid === true ? 'liquid' : ''}</p>
@@ -22,7 +39,7 @@ export default function PackagingListItem({ index }) {
             <p>{packagingList[index].otherType !== '' ? packagingList[0].otherType : ''}</p>
           </div>
         <p>Packaging Type:</p>
-          <div>
+          <div className={s.features}>
             <p>{packagingList[index].flexible === true ? 'flexible' : ''}</p>
             <p>{packagingList[index].opaque === true ? 'opaque' : ''}</p>
             <p>{packagingList[index].protective === true ? 'protective' : ''}</p>
@@ -31,7 +48,7 @@ export default function PackagingListItem({ index }) {
             <p>{packagingList[index].otherPackagingType !== '' ? packagingList[0].otherPackagingType : ''}</p>
           </div>
         <p>Sustainability level:</p>
-          <div>
+          <div className={s.features}>
             <p>{packagingList[index].biodegradable === true ? 'biodegradable' : ''}</p>
             <p>{packagingList[index].compostable === true ? 'compostable' : ''}</p>
             <p>{packagingList[index].recyclable === true ? 'recyclable' : ''}</p>

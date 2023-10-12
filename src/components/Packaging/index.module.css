@@ -1,6 +1,12 @@
 .packaging {
     width: 90%;
-    padding: 40px;
+    padding: 20px 40px 20px 40px;
     background-color: rgba(0, 170, 80, 0.2);
     border-radius: 10px;
+}
+
+.button_container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }

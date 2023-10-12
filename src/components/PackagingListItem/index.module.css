@@ -3,4 +3,33 @@
     padding: 40px;
     background-color: rgba(0, 170, 80, 0.2);
     border-radius: 10px;
+
+    position: relative;
+}
+
+.packaging_list_item > p {
+    font-weight: 600;
+}
+
+.features > p, .content {
+    font-weight: 500;
+}
+
+.features > p {
+    margin-left: 20px;
+}
+
+.icon {
+    fill:  white;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.icon:hover {
+    fill: rgba(0, 170, 80, 0.75);
+    transition: all .4s ease;
 }

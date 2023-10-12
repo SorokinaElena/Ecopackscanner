@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 
-// axios.defaults.baseURL = 'http://localhost:5001';
-axios.defaults.baseURL = 'http://soroka.chickenkiller.com:5001';
+axios.defaults.baseURL = 'http://localhost:5001';
+// axios.defaults.baseURL = 'http://soroka.chickenkiller.com:5001';
+// axios.defaults.baseURL = 'magpie-soroka.info:5001';
 
 // Include credentials (cookies) with every Axios request
 // axios.defaults.withCredentials = true;

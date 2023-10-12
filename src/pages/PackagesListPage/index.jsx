@@ -5,16 +5,25 @@ import PackagingListItem from '../../components/PackagingListItem';
 import Button from '../../components/Button';
 import formService from '../../services/form.service';
 import { Context } from '../../context';
+import { BiRefresh } from 'react-icons/bi';
 
 
 export default function PackagesListPage() {
 
-  const { packagingList, setPackagingList } = useContext(Context);
+  const { packagingList, setPackagingList, authUser, setAuthUser } = useContext(Context);
+
+  const submit = (data) => {
+    console.log(data);
+    formService.pack_list_req(data);
+    const current_search_res = formService.get_current_packaging_list();
+    if(current_search_res) setPackagingList(current_search_res);
+  }
 
   useEffect(() => {
     const current_search_res = formService.get_current_packaging_list();
+    // const current_search_res = formService.pack_list_req(authUser.details._id);
     if(current_search_res) setPackagingList(current_search_res);
-  }, []);
+  }, [setPackagingList]);
 
   console.log(packagingList);
 
@@ -23,11 +32,14 @@ export default function PackagesListPage() {
   return (
     <div className={s.background}>
       <div className={['content_container', s.content_container].join(' ')}>
-        <p className='page_title'>{'Packages list'.toUpperCase()}</p>
+        <div>
+          <p className='page_title'>{'Packages list'.toUpperCase()}</p>
+          <BiRefresh className={s.refresh_icon} onClick={() => {submit(authUser.details._id)}} />
+        </div>
         {
           packagingList.length > 0
           ? packagingList.map(el => <PackagingListItem key={el._id} {...el} index={packagingList.indexOf(el)} />)
-          : 'No items added'
+          : <p>No items added</p> 
         }
         <Link to='/pack_search'>
           <Button color='grey'>add new packaging</Button>

@@ -24,9 +24,9 @@
     color: #2D2D2D;
 }
 
-html {
+/* html {
     overflow-x: hidden;
-}
+} */
 
 body {
     /* background-image: url('./media/paper_background_2.png');
@@ -34,6 +34,10 @@ body {
     background-size: cover; */
     /* background-color: #c8beb0; */
     background-color: rgba(200, 190,176, 0.70);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
 }
 
 .content_container {

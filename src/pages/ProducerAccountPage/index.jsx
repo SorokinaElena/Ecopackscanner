@@ -21,6 +21,7 @@ export default function ProducerAccountPage() {
   const submit = (data) => {
     console.log(data);
     formService.pack_list_req(data);
+    formService.get_current_packaging_list();
   }
 
   return (

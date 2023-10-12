@@ -84,7 +84,8 @@ export default function FormSearchPack1() {
             await formService.pack_create_req({...data}).then(
               (response) => {
                 console.log(response)
-                navigate('/producer_account');
+                formService.pack_list_req(authUser.details._id);
+                navigate('/producer_account/packages_list');
                 // window.location.reload(); // обнуляет состояние
               },
               (error) => {
@@ -221,6 +222,8 @@ export default function FormSearchPack1() {
     const otherSustainabilityLevelRegister = register('otherSustainability', {
         required: false,
     });
+
+console.log(reqData)
 
 
   return (
@@ -440,3 +443,5 @@ export default function FormSearchPack1() {
     </div>
   )
 }
+
+// селект: https://www.mousedc.ru/learning/517-selekt-steyt-react/

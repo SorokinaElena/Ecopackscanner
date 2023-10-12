@@ -31,20 +31,20 @@ export default function Nav() {
   const set_menu_active = () => {
     setMenuActive(menuActive ? false : true);
     console.log(menuActive)
-    // if(menuActive === true) {
-    //   document.body.classList.add('lock-scroll');
-    // } else {
-    //   document.body.classList.remove('lock-scroll');
-    // }
+    if(menuActive === false) {
+      document.body.classList.add('lock-scroll');
+    } else {
+      document.body.classList.remove('lock-scroll');
+    }
   };
 
-  console.log('test')
-  console.log(menuActive)
-  if(menuActive === true) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
+  // console.log('test')
+  // console.log(menuActive)
+  // if(menuActive === true) {
+  //   document.body.style.overflow = 'hidden';
+  // } else {
+  //   document.body.style.overflow = '';
+  // }
   
 
   let btn_status_unauthuser = {};

@@ -23,7 +23,7 @@ export default function CustomerAccountPage() {
         <p>user name: {authUser.details.companyName}</p>  
         <p>user type: {authUser.details.userType}</p> 
         <p>user id: {authUser.details._id}</p> 
-        <p>points value: three points</p>
+        <p>tockens value: 0</p>
         <Link to='/pack_search'>
           <Button color='grey'>search for ecopackaging</Button>
         </Link>
